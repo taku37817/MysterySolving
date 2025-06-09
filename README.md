@@ -55,27 +55,51 @@
 
 ### 🧰 利用ツール・エンジン一覧
 
-1. **Epic Games Launcher（最新）**  
+①. **Epic Games Launcher（最新）**  
    ※Epic Games Launcherの利用自体インターネット接続が必要です。
 
-2. **Unreal Engine：5.0.3**
+②. **Unreal Engine：5.0.3**
 
-3. **Visual Studio Installer**
+③. **Visual Studio Installer**
 
-4. **Visual Studio Community 2022：17.13.1**
+④. **Visual Studio Community 2022：17.13.1**
 
-5. **Visual Studio Code：1.100.3（拡張機能あり）**
+⑤. **Visual Studio Code：1.100.3（拡張機能あり）**
 
 ---
 
 ### 📥 各項目のインストール手順
 
-#### 2. Unreal Engine 5.0.3
+#### ②. Unreal Engine 5.0.3
 
-Epic Games Launcherから「Unreal Engine 5.0.3 」をインストール。  
-※以下にインストール手順の画像を挿入予定。
+Epic Games Launcherから「Unreal Engine 5.0.3 」をインストールします。
 
-#### 3. Visual Studio Installer
+1. **Epic Games Launcher** を起動し、「**Unreal Engine**」タブを選択  
+2. 「**ライブラリ**」→「**Engineバージョン⊞**」から **5.0.3** を選択し、「**インストール**」をクリック  
+3. 「**オプション**」から必要な機能を追加  
+4. 「**参照**」でインストール先を変更できます（※変更しない場合はそのままでOK）  
+5. オプションを追加後、「インストール開始」
+
+📷 **インストール手順の参考画像：**  
+<img src="https://github.com/user-attachments/assets/1b96a7e0-00fb-4d78-946b-31be6f3e91b2" alt="UnrealEngineバージョンインストールについて" width="700"><br>
+<img src="https://github.com/user-attachments/assets/a1695a20-d14b-4984-ae02-e6c0d3b60176" alt="UnrealEngineバージョンインストール、初期のオプション変更について" width="700"><br>
+
+📷 **オプション設定の確認画面：**  
+### 6のオプションの追加項目について
+<img src="https://github.com/user-attachments/assets/e9f1e05d-4ef9-4255-97b1-7f7ae1ee595f" alt="UnrealEngineインストール時の確認画面" width="700"><br>
+
+🔸プラットフォームの追加は **不要** です。
+---
+
+## ⚠️ **7でインストール場所を変更する場合の注意：**  
+「**Epic Games**」という名前のフォルダを自分で作成し、その中にインストールしてください。  
+（例：`D:\Epic Games\UE_5.0` など）  
+間違えて「Epic Game」や「Epic Gemas」などにしないように注意！
+
+---
+
+
+#### ③. Visual Studio Installer
 
 [公式リリース履歴](https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/release-history#release-dates-and-build-numbers)より「17.13.1（2025年2月19日）」を使用。  
 
@@ -108,17 +132,13 @@ Epic Games Launcherから「Unreal Engine 5.0.3 」をインストール。
 > ⚠️ ワークロード②と③に関しては、このあと「個別コンポーネント」から追加するので、**インストール詳細の設定は変更しなくて大丈夫**です。
 
 
-#### 🧩 個別コンポーネントで追加項目
+#### 🧩 個別コンポーネントから手動で追加する項目について
 **▼ .NET**
 - ・.NET 6.0 ランタイム（サポート対象外）
 - ・.NET Croe 3.1 ランタイム(サポート対象外)
 - ・.NET Framwork 4.6.2SDK
-- 
+  
 **▼ SDK、ライブラリ、およびフレームワーク**
-- .NET 6.0 ランタイム（サポート対象外）  
-- .NET Core 3.1 ランタイム（サポート対象外）  
-- .NET Framework 4.6.2 SDK  
-
 - v142 ビルドツール用 C++ v14.29 (16.11) ALT（x86およびx64）  
 - v143 ビルドツール用 C++ v14.31 (17.1) ALT（x86およびx64）（サポート対象外）  
 - v143 ビルドツール用 C++ v14.32 (17.2) ALT（x86およびx64）（サポート対象外）  
@@ -130,11 +150,11 @@ Epic Games Launcherから「Unreal Engine 5.0.3 」をインストール。
 
 ---
 
-#### 5. Visual Studio Code（1.100.3）
+#### ⑤. Visual Studio Code（1.100.3）
 
 [ダウンロードリンク](https://code.visualstudio.com/updates/v1_100)
 
-**おすすめ拡張機能：**
+**利用機能：**
 
 - C/C++ Themes  
 - C/C++  
