@@ -81,12 +81,12 @@ Epic Games Launcherから「Unreal Engine 5.0.3 」をインストール。
 
 **追加ワークロード：**
 
-- C++によるゲーム開発  
-- C++によるデスクトップ開発  
-- .NET デスクトップ開発  
+-①「C++によるゲーム開発」
+-②「C++によるデスクトップ開発」
+-③「.NET デスクトップ開発」
 
-**インストール詳細オプション：**
-
+**インストール詳細」の「オプション」から以下にチェックが入ってるか確認**
+①「C++によるゲーム開発」の確認事項
 - MSVC v143 - VS 2022 C++ x64/x86 ビルドツール（最新）  
 - C++ のプロファイル ツール  
 - C++ Build Insights  
@@ -97,7 +97,8 @@ Epic Games Launcherから「Unreal Engine 5.0.3 」をインストール。
 - Unreal Engine 用 Visual Studio Tools  
 - HLSL ツール  
 - Unreal Engine のインストーラー  
-- 任意：Unreal Engine 用 Android Visual Studio Tools  
+- 任意：Unreal Engine 用 Android Visual Studio Tools
+- ②と③に関しては、この後「個別コンポーネント」からコンポーネントを追加するので、インストール詳細は何も変更しなくて大丈夫です。
 
 **個別コンポーネントで追加：**
 
