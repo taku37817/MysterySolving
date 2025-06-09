@@ -56,7 +56,7 @@
 ### 🧰 利用ツール・エンジン一覧
 
 1. **Epic Games Launcher（最新）**  
-   ※インターネット接続が必要です。
+   ※Epic Games Launcherの利用自体インターネット接続が必要です。
 
 2. **Unreal Engine：5.0.3**
 
