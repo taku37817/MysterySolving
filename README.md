@@ -53,7 +53,7 @@
 
 ---
 
-### 🧰 利用ツール・エンジン一覧
+## 🧰 利用ツール・エンジン一覧
 
 ①. **Epic Games Launcher（最新）**  
    ※Epic Games Launcherの利用自体インターネット接続が必要です。
@@ -70,9 +70,9 @@
 
 ### 📥 各項目のインストール手順
 
-#### ②. Unreal Engine 5.0.3
+# ②. Unreal Engine 5.0.3
 
-Epic Games Launcherから「Unreal Engine 5.0.3 」をインストールします。
+①のEpic Games Launcherから「Unreal Engine 5.0.3 」をインストールします。
 
 1. **Epic Games Launcher** を起動し、「**Unreal Engine**」タブを選択  
 2. 「**ライブラリ**」→「**Engineバージョン⊞**」から **5.0.3** を選択し、「**インストール**」をクリック  
@@ -99,7 +99,7 @@ Epic Games Launcherから「Unreal Engine 5.0.3 」をインストールしま�
 ---
 
 
-#### ③. Visual Studio Installer
+# ③. Visual Studio Installer
 
 [公式リリース履歴](https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/release-history#release-dates-and-build-numbers)より「17.13.1（2025年2月19日）」を使用。  
 
@@ -150,7 +150,7 @@ Epic Games Launcherから「Unreal Engine 5.0.3 」をインストールしま�
 
 ---
 
-#### ⑤. Visual Studio Code（1.100.3）
+# ⑤. Visual Studio Code（1.100.3）
 
 [ダウンロードリンク](https://code.visualstudio.com/updates/v1_100)
 
