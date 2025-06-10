@@ -75,7 +75,7 @@
 
 ⑤. **Visual Studio Code：1.100.3（拡張機能あり）**
 
-<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%EF%B8%8F%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">上記の各インストール手順についてはこちらから</a></h3>
+<h3><a href=https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%E5%90%84%E9%A0%85%E7%9B%AE%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86>上記の各インストール手順についてはこちら</a></h3>
 
 ---
 ---
