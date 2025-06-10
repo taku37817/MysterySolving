@@ -36,7 +36,7 @@
 
 ---
 
-[2.🖥️ 開発環境](https://github.com/taku37817/MysterySolving/tree/RestorationBranch#2%EF%B8%8F-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83)
+[2.🖥️ 開発環境](##2-開発環境https://github.com/taku37817/MysterySolving/tree/RestorationBranch#2%EF%B8%8F-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83)
 
 ## 🖥️　インストール手順について
 
