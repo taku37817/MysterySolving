@@ -29,8 +29,6 @@
 
 このプロジェクトは、Unreal Engine 5とC++の2024年12月18日～2025年1月24日までの学習成果を形にすることを目的として開発された作品です。
 
-🛠 詳細な環境とインストール手順については [こちら](#開発環境とインストール手順) をご参照ください。
-
 ---
 
 ---
@@ -75,7 +73,7 @@
 
 ⑤. **Visual Studio Code：1.100.3（拡張機能あり）**
 
-<h3><a href=https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%E5%90%84%E9%A0%85%E7%9B%AE%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86>上記の各インストール手順についてはこちら</a></h3>
+<h3><a href=https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%E5%90%84%E9%A0%85%E7%9B%AE%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86>🛠上記の各インストール手順についてはこちら</a></h3>
 
 ---
 ---
