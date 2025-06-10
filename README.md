@@ -80,8 +80,8 @@
 # 3.使用アセット、BGM、SE素材及び著作権について
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
-## 使用
-### Infuse Studio様「Medieval Dungeon」
+
+Infuse Studio様「Medieval Dungeon」
 著作権の視点では「あなたが作ったゲームの中の全体的な構成や改変部分はあなたのものだけど、元素材の権利までは渡してない」となります。
 詳細はこちらのリンクからご確認ください。
 ---
