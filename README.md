@@ -1,5 +1,5 @@
 # 目次
-## 1.概要
+<h2><a hregf="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#1%E6%A6%82%E8%A6%81">1.概要<a></h2>
 <h2><a href=https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#2%EF%B8%8F-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83-1>2.🖥️ 開発環境</a></h2>
 ## 10.インストール
 
