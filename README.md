@@ -1,6 +1,4 @@
-# MysterySolving
-
-## 🎮 タイトル・ジャンル
+# 🎮 タイトル・ジャンル
 - タイトル：MysterySolving  
 - ジャンル：謎解きゲーム  
 
