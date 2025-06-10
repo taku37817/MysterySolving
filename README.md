@@ -79,7 +79,7 @@
 ---
 ---
 
-# 3.アセット、著作権
+# 3.使用アセット、著作権
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 ---
