@@ -36,10 +36,9 @@
 
 ---
 
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
-
 ## 2.🖥️ 開発環境
 
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 ## 🖥️　インストール手順について
 
