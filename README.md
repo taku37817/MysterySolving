@@ -77,9 +77,11 @@
 
 ③. **Visual Studio Installer**
 
-④. **Visual Studio Community 2022：17.13.1**
+④. **Visual Studio Community 2022：17.13.1** (オプション及び個別コンポーネント追加あり)
 
 ⑤. **Visual Studio Code：1.100.3（拡張機能あり）**
+
+上記の各インストール手順についてはこちらから<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch#2開発環境">2.🖥️ 開発環境</a></h2>
 
 ---
 
