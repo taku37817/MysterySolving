@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/9ff96d03-4dc3-4a59-b6d5-34511c12c7d2)
-
 # 目次
 
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#1%E6%A6%82%E8%A6%81">1.概要</a></h2>
@@ -116,10 +114,10 @@
   - Saved/Config/Windows/GameUserSettings.ini（ユーザーがゲーム内で変更した設定内容を保存）
 - ### Content（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るメインフォルダになります。）
   - .umap（画面のデータを管理している拡張子）
-  - .uasset（ブループリント、テクスチャ、画像、サウンドなどのアセットのデータ拡張子です。）
-    .uassetのファイル名に「BP_」が付いているものは、Blueprintデータを示します。
-   💡「Blueprint」は、ノードを繋いでいくだけでキャラクターの動きや条件分岐などを作れる視覚的なスクリプト機能です。
-  - ファイル名に「WBP_」が付いているのは「Widget Blueprint」データファイルになります。　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 💡「Widget Blueprint」は、文字や画像などのUI（ユーザーインターフェース）を 表示・操作するための機能です。
+  - .uasset（ブループリント、テクスチャ、画像、サウンドなどのアセットのデータ拡張子です。）  
+    .uassetのファイル名に「BP_」が付いているものは、Blueprintデータを示します。  
+  💡「Blueprint」は、ノードを繋いでいくだけでキャラクターの動きや条件分岐などを作れる視覚的なスクリプト機能です。
+  - ファイル名に「WBP_」が付いているのは「Widget Blueprint」データファイルになります。　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　💡「Widget Blueprint」は、文字や画像などのUI（ユーザーインターフェース）を 表示・操作するための機能です。
   - 
 
 
