@@ -117,7 +117,10 @@
 - ### Content（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るメインフォルダになります。）
   - .umap（画面のデータを管理している拡張子）
   - .uasset（ブループリント、テクスチャ、画像、サウンドなどのアセットのデータ拡張子）
-  - 
+  - ファイル名に「BP_」が付いてるのは「Blueprint」データファイル名になります。
+  - ファイル名に「WBP_」が付いているのは「Widget Blueprint」データファイルになります。                                                                                                                                                               💡Widget Blueprintは、文字や画像などのUI（ユーザーインターフェース）を 表示・操作するための機能です。
+
+
 ---
 # .使用アセット、BGM、SE素材及び著作権について
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
