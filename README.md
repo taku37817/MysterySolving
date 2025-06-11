@@ -76,7 +76,10 @@
 
 ---
 ---
-# 3.🛠️ 使用技術一覧
+# 
+
+---
+# .🛠️ 使用技術一覧
 ## 🎮 ゲームエンジン・言語
 - Unreal Engine 5.0.3
 - C++
@@ -103,6 +106,19 @@
 ---
 ---
 
+# .ディレクトリ構成
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
+
+- ### Config（各エンジン内の設定ファイルを「.ini」形式で格納しているフォルダになります。）
+  - Config/DefaultEngine.ini（エンジンの基本設定）
+  - Config/DefaultGame.ini（ゲーム全体の設定）
+  - Config/DefaultInput.ini（入力設定・キー設定）
+  - Saved/Config/Windows/GameUserSettings.ini（ユーザーがゲーム内で変更した設定内容を保存）
+- ### Content（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るメインフォルダになります。）
+  - .umap（画面のデータを管理している拡張子）
+  - .uasset（ブループリント、テクスチャ、画像、サウンドなどのアセットのデータ拡張子）
+  - 
+---
 # .使用アセット、BGM、SE素材及び著作権について
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
@@ -116,12 +132,6 @@ Infuse Studio様「Medieval Dungeon」
 ---
 
 # .アセットの保存場所
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
-
----
----
-
-# .ディレクトリ構成
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 ---
