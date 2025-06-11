@@ -68,7 +68,7 @@
 
 ③. **Visual Studio Installer**
 
-④. **Visual Studio Community 2022：17.13.1** (オプション及び個別コンポーネント追加あり)
+④. **Visual Studio Community 2022：17.13.1** (開発ワークロードのオプション及び個別コンポーネント追加あり)
 
 ⑤. **Visual Studio Code：1.100.3（拡張機能あり）**
 
@@ -76,8 +76,34 @@
 
 ---
 ---
+# 3.🛠️ 使用技術一覧
+## 🎮 ゲームエンジン・言語
+- Unreal Engine 5.0.3
+- C++
+- Blueprint（ビジュアルスクリプティング）
+## 📦 データ・セーブ処理
+- SaveGameクラスを使った設定の保存・読み込み
+- GameInstanceを経由した設定データ共有
+## 🧩 UI（ウィジェット）
+- UUserWidget（WBP）を用いたUI構築
+- 設定画面・タイトル画面・ポーズメニューの実装
+- UIイベント（ボタン・スライダー・テキストの更新）
+## 🔊 オーディオ・音量調整
+- SoundMixを使用したBGM/SEの音量制御
+- スライダーでの即時反映処理
+## 🎇 演出・ビジュアル
+- パーティクルの配置と発火制御
+- UIアニメーション（フェードなど）
+- イベント連動の演出（クリア時など）
+## 🎮 ゲームロジック
+- TriggerComponentを使ったオーバーラップ処理
+- プレイヤーとの距離判定による表示切り替え
+- 謎解き・配置判定・操作制御などの仕組み
 
-# 3.使用アセット、BGM、SE素材及び著作権について
+---
+---
+
+# .使用アセット、BGM、SE素材及び著作権について
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 ## ゲームアセット
@@ -89,19 +115,19 @@ Infuse Studio様「Medieval Dungeon」
 
 ---
 
-# 4.アセットの保存場所
+# .アセットの保存場所
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 ---
 ---
 
-# 5.ディレクトリ構成
+# .ディレクトリ構成
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 ---
 ---
 
-# 6.📥 各項目のインストール手順
+# .📥 各項目のインストール手順
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 ---
@@ -199,6 +225,6 @@ Infuse Studio様「Medieval Dungeon」
 - Japanese Language Pack for Visual Studio Code（日本語化用）
 
 ---
-# 7.リポジトリ「ダウンロード」または「クローン」後のフォルダー移動の手順
+# .リポジトリ「ダウンロード」または「クローン」後のフォルダー移動の手順
 
 ---
