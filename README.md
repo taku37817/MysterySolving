@@ -95,12 +95,12 @@
 - ## Config（各エンジン内の設定ファイルを「.ini」形式で格納しているフォルダになります。）
 | 📄ファイル名 | 📝説明 |
 |--------------|--------|
-| 🔹 **HoloLensEngine.ini** | HoloLens（Microsoft MRデバイス）向けのエンジン設定ファイルです。<br>プロジェクトがHoloLensを対象にしていない場合は特に使われないことが多いです。<br>自動生成された可能性あります。 |
-| 🔹 **DefaultEditor.ini** | Unreal Editorの設定（UI、ツールバー表示、プラグイン設定など）を定義してます。<br>開発中のエディタ挙動に関係します。 |
-| 🔹 **DefaultEditorPerProjectUserSettings.ini** | プロジェクトごとの個人ユーザー設定を記録します。<br>例：ウィンドウ位置や一部の一時設定など。マルチユーザーで異なる環境でも使えるようになります。 |
-| 🔹 **DefaultEngine.ini** | Unreal Engineの主要設定ファイルです。<br>レンダリング、ネットワーク、サブシステム、パス指定など広範囲の設定を含みます。 |
-| 🔹 **DefaultGame.ini** | ゲームに関する基本設定（ゲームモード、デフォルトのPawnやHUDなど）を定義してます。<br>ゲームルールやゲーム内挙動のベースを記述します。 |
-| 🔹 **DefaultInput.ini** | プレイヤーの入力（キーボード・マウス・ゲームパッド）設定を定義してます。<br>例：`MoveForward` に `W` を割り当てるなど。 |
+| 🔹**HoloLensEngine.ini** | HoloLens（Microsoft MRデバイス）向けのエンジン設定ファイルです。<br>プロジェクトがHoloLensを対象にしていない場合は特に使われないことが多いです。<br>自動生成された可能性あります。 |
+| 🔹**DefaultEditor.ini** | Unreal Editorの設定（UI、ツールバー表示、プラグイン設定など）を定義してます。<br>開発中のエディタ挙動に関係します。 |
+| 🔹**DefaultEditorPerProjectUserSettings.ini** | プロジェクトごとの個人ユーザー設定を記録します。<br>例：ウィンドウ位置や一部の一時設定など。マルチユーザーで異なる環境でも使えるようになります。 |
+| 🔹**DefaultEngine.ini** | Unreal Engineの主要設定ファイルです。<br>レンダリング、ネットワーク、サブシステム、パス指定など広範囲の設定を含みます。 |
+| 🔹**DefaultGame.ini** | ゲームに関する基本設定（ゲームモード、デフォルトのPawnやHUDなど）を定義してます。<br>ゲームルールやゲーム内挙動のベースを記述します。 |
+| 🔹**DefaultInput.ini** | プレイヤーの入力（キーボード・マウス・ゲームパッド）設定を定義してます。<br>例：`MoveForward` に `W` を割り当てるなど。 |
 
 
 
