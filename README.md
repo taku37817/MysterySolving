@@ -28,14 +28,12 @@
 
 ---
 
----
-
 # 2.🖥️ 開発環境
 
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 <details>
-<summary><b>📁✅ 開発環境</b></summary>
+<summary><b> ✅ 開発環境</b></summary>
 
 - **OS**  
   Windows11 Home (バージョン：24H2)  
@@ -56,9 +54,10 @@
 - **ストレージ**  
   SSD 250GB  
 
----
+</details>
+
 <details>
-### 🧰 利用ツール・エンジン一覧
+<summary><b> 🧰 利用ツール・エンジン一覧 </b></summary>
 
 ①. **Epic Games Launcher（最新）**  
    ※Epic Games Launcherの利用自体インターネット接続が必要です。
@@ -73,12 +72,16 @@
 
 <h3><a href=https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%E5%90%84%E9%A0%85%E7%9B%AE%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86>🛠上記の各インストール手順についてはこちら</a></h3>
 
----
----
-# 
+</details> 
 
 ---
+
 # .🛠️ 使用技術一覧
+<details>
+<summary><b> 📖 詳細はこちら </b></summary>
+
+ <br>
+           
 | カテゴリ               | 使用技術・内容 |
 |------------------------|----------------|
 | 🎮 ゲームエンジン・言語 | - Unreal Engine 5.0.3<br>- C++<br>- Blueprint（ビジュアルスクリプティング） |
@@ -88,12 +91,19 @@
 | 🎇 演出・ビジュアル     | - パーティクルの配置と発火制御<br>- UIアニメーション（フェードなど）<br>- イベント連動の演出（クリア時など） |
 | 🎮 ゲームロジック       | - TriggerComponentを使ったオーバーラップ処理<br>- プレイヤーとの距離判定による表示切り替え<br>- 謎解き・配置判定・操作制御などの仕組み |
 
+</details>
+
 ---
----
-# .ディレクトリ構成
+
+# .📂 ディレクトリ構成
+
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
-- ## 【Config（各エンジン内の設定ファイルを「.ini」形式で格納しているフォルダになります。）】
+<details>
+<summary><b>・📁【「Config」（各エンジン内の設定ファイルを「.ini」形式で格納しているフォルダになります。）】 </b></summary>
+
+<br>
+
 | 📄ファイル名 | 📝説明 |
 |--------------|--------|
 | 🔹**HoloLensEngine.ini** | HoloLens（Microsoft MRデバイス）向けのエンジン設定ファイルです。<br>プロジェクトがHoloLensを対象にしていない場合は特に使われないことが多いです。<br>自動生成された可能性あります。 |
@@ -111,9 +121,48 @@
 | 🔹 **.umap**         | 画面（マップ）のデータを管理している拡張子です。 |
 | 🔹 **.uasset**       | ブループリント、テクスチャ、画像、サウンドなどのアセットに使われる拡張子です。<br>💡 「`BP_`」 で始まるファイル名は「**Blueprint**」を意味します。<br>「Blueprint」とはノードベースでキャラクターの動きや条件分岐を組むことができます。<br>💡「`WBP_`」 が付いたファイルは「**Widget Blueprint**」です。<br> 「Widget Blueprint」はUI（文字、画像など）を表示・操作するための機能です。|
 
- - ## 【Content（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るメインフォルダになります。）】
+---
+
+</details>
+
 <details>
-<summary><b>📁「Source」ディレクトリに含まれる構成ファイルおよびソースコードの説明</b></summary>
+<summary><b>・📁【「Content」（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るメインフォルダになります。）】</b></summary>
+
+<br>
+
+  <details>
+  <summary><b>&nbsp;&nbsp;&nbsp;&nbsp;🔸初めにこのディレクトリ構成の「拡張子」について。</b></summary>
+
+<br>
+
+| 📄 種別/接頭辞         |📝説明 |
+|----------------------|------|
+| 🔹 **.umap**         | 画面（マップ）のデータを管理している拡張子です。 |
+| 🔹 **.uasset**       | ブループリント、テクスチャ、画像、サウンドなどのアセットに使われる拡張子です。<br>💡 「`BP_`」 で始まるファイル名は「**Blueprint**」を意味します。<br>「Blueprint」とはノードベースでキャラクターの動きや条件分岐を組むことができます。<br>💡「`WBP_`」 が付いたファイルは「**Widget Blueprint**」です。<br> 「Widget Blueprint」はUI（文字、画像など）を表示・操作するための機能です。|
+
+<br>
+
+</details>
+<details>
+  <summary><b>&nbsp;&nbsp;&nbsp;&nbsp;🔸 UnrealEngine公式のテンプレートから生成されたフォルダーについて。</b></summary>
+
+ <br>
+
+| 📁 フォルダ名 | 種別 | 説明 |
+|:-------------|:------|:------|
+| FirstPerson | 🎮 テンプレート由来 | Unreal公式の First Person Template のメインマップや設定が含まれる |
+| FirstPersonArms | 🎮 テンプレート由来 | テンプレートキャラ用の腕メッシュ・アニメーションなどを格納 |
+| FPWeapon | 🎮 テンプレート由来 | 一人称視点テンプレートで使われる武器関連（銃）ブループリント等 |
+| StarterContent | 🎮 テンプレート由来 | プロジェクト作成時に選択可能な標準アセット群（マテリアル、音など） |
+| _ExternalActors_/FirstPerson/Maps/FirstPersonMap | 🎮 テンプレート由来 | World Partition により自動生成されたアクター配置情報 |
+| _ExternalObjects_/FirstPerson/Maps/FirstPersonMap | 🎮 テンプレート由来 | World Partition のオブジェクト定義（レベル内構成情報） |
+
+ <br>
+ </details>
+</details>
+
+<details>
+<summary><b>・📁【「Source」ディレクトリに含まれる構成ファイルおよびソースコードの説明】</b></summary>
 <br>
 
 | 📄 ファイル名 | 📝 説明 |
@@ -121,9 +170,113 @@
 | 🔹**MysterySolving.Target.cs** | 🧠 `MysterySolvingTarget` は、Unreal Build Tool（UBT）に「ゲーム本体のビルド構成」を伝えるクラスです。<br>🛠️ ビルドツールがこのファイルを読み込み、**どのモジュールを含めるか**、**どの設定でビルドするか** を判断します。<br><br>🎮 このファイルは「**MysterySolvingというゲームを、どのモジュールで・どの設定でビルドするか**」を指定しており、**UE4/UE5 の C++プロジェクトを正しくビルドするために必要な構成要素**です。 |
 | 🔹**MysterySolvingEditor.Target.cs** | 🛠️ このファイルは、**Unreal Editor（エディタ）を拡張・開発するためのビルド設定**を Unreal Build Tool に伝える役割を持ちます。<br><br>🔹 C++プロジェクトで **エディタでのプレイや編集作業を行う際** に、このターゲットが使用されます。<br><br>🔧 目的：ゲームではなく「**開発用環境（エディタ）**」をビルドする。<br>🔧 内容：`MysterySolving` というモジュールを使用し、**エディタ用のバイナリ**を構築するために使われます。 |
 
-</details>
-<summary><b>📁 以下のファイルは、「Source/MysterySolving」ディレクトリに含まれる構成のファイルおよびソースコードになります。</b></summary>
+<details>
+<summary><b>・📁【「Source/MysterySolving」ディレクトリに含まれる構成のファイルおよびソースコードになります。】</b></summary>
 
+<br>
+  
+<summary><b>🔸10件前後ずつで記載しています。</b></summary>
+
+<br>
+
+---
+
+| 📄 ファイル名 | 📝 説明 |
+|:-----------------------------|:-------------------------------------------------------------------------------------------|
+| `CandleAndPointLightOn.cpp` | キャンドルアクターとオーバーラップしたときに、関連するポイントライトを点灯するコンポーネント。 |
+| `CandleAndPointLightOn.h` | CandleAndPointLightOn のヘッダーファイル。Overlap検知やライト制御の宣言を含む。 |
+| `ClearTriggerComponent.cpp` | ブロンズ像がトリガーボリュームに重なったときにゲームクリアを処理するボックスコンポーネント。UI表示と入力無効化も含む。 |
+| `ClearTriggerComponent.h` | ClearTriggerComponent のヘッダーファイル。BeginOverlapや入力制御の定義を含む。 |
+| `DoorKeyManager.cpp` | キーの取得とドア操作をまとめて管理し、キーアイコンの表示とドアの開閉を制御するアクター。 |
+| `DoorKeyManager.h` | DoorKeyManager のヘッダーファイル。鍵とドアの接続、状態保持などの変数や関数を定義。 |
+| `DoorMover.cpp` | ドアを時間差で開閉し、開閉音も再生するアクター。Tick関数で開閉を管理。 |
+| `DoorMover.h` | DoorMover のヘッダーファイル。開閉アニメーションや音再生の関数が定義されている。 |
+| `FinalMysterySolvingRoomClass.cpp` | パズルルームの全体ロジックを担い、キャンドル、ドア、像などの状態を一括管理するアクター。 |
+| `FinalMysterySolvingRoomClass.h` | FinalMysterySolvingRoomClass のヘッダーファイル。条件チェックや部屋内制御のロジック宣言がある。 |
+
+---
+
+| 📄 ファイル名 | 📝 説明 |
+|:-----------------------------|:-------------------------------------------------------------------------------------------|
+| `GameMode_GameOver.cpp` | カウントダウンタイマーを管理し、時間切れ時にUI表示・プレイヤー操作停止を行うゲームオーバー処理アクター。 |
+| `GameMode_GameOver.h`   | GameMode_GameOver のヘッダーファイル。UI表示、タイマー、ゲーム終了処理の定義を含む。 |
+| `GameMode_Pause.cpp`    | Pauseボタンの入力を受け取り、ポーズメニューの表示・非表示を切り替える処理を行うアクター。 |
+| `GameMode_Pause.h`      | GameMode_Pause のヘッダーファイル。入力バインド、ポーズ状態フラグなどを管理。 |
+| `GameOverWidget.cpp`    | ゲームオーバー画面のUIで、タイトル画面への遷移やリスタート処理を行うウィジェット。 |
+| `GameOverWidget.h`      | GameOverWidget のヘッダーファイル。タイトル遷移・リスタート関数を定義。 |
+| `GargoyleAndPlayerDistance.cpp` | プレイヤーとの距離を毎フレーム監視し、ガーゴイル像が近いときにメッセージ表示などを行うコンポーネント。 |
+| `GargoyleAndPlayerDistance.h`   | GargoyleAndPlayerDistance のヘッダーファイル。距離判定ロジックや変数を定義。 |
+| `Grabber.cpp`           | 鍵・像・キャンドルなどのアクターを掴んだり離したりする処理を担うシーンコンポーネント。UIメッセージ制御や距離判定も含む。 |
+| `Grabber.h`             | Grabber のヘッダーファイル。掴み対象の管理やHUDメッセージの表示・非表示の制御を定義。 |
+
+---
+
+| 📄 ファイル名 | 📝 説明 |
+|:-------------------------------|:-------------------------------------------------------------------------------------------|
+| `TriggerComponent.cpp` | 台座のTrigger処理を実装。オーバーラップ状況に応じて像の設置判定、ドア開閉、UI表示、コリジョン設定などを制御。 |
+| `TriggerComponent.h` | `TriggerComponent.cpp`のヘッダーファイル。メッセージ表示・ガーゴイル判定・ドア連携・複数タグ判定の変数と関数を定義。 |
+| `StoneSpecialDoorMover.cpp` | Gargoyle像が正しい台座に設置されているかを判定し、条件一致でストーンドアを開閉する処理を記述。 |
+| `StoneSpecialDoorMover.h` | 特定タグ（例：StandRed）とガーゴイル配置状態に基づいてストーンドアを制御するための変数と関数を宣言。 |
+| `SwitchMover.cpp` | スイッチ台の押下処理。プレイヤーが押せる状態の時、方向を判定しつつ物理的に動くよう設定し、障害物も判定。 |
+| `SwitchMover.h` | `SwitchMover.cpp`のヘッダーファイル。スイッチの押し判定、障害物検知、メッシュコンポーネント制御などを定義。 |
+| `TitleInOperable.cpp` | タイトル画面用のアクターで、UIのみに入力を集中させてプレイヤーの操作を完全に無効化する機能を実装。 |
+| `TitleInOperable.h` | `TitleInOperable.cpp`のヘッダーファイル。UI表示用Widgetの参照を持ち、入力制御を行うアクターとして定義。 |
+| `TitleOperation.cpp` | 「ゲーム開始」ボタン押下時に、マウスカーソルを非表示にし、プレイヤーの移動を有効にしてレベル遷移を行う。 |
+| `TitleOperation.h` | `TitleOperation.cpp`のヘッダーファイル。ボタン操作（ゲーム開始）の関数と、UIクラスの指定を行うプロパティを定義。 |
+
+---
+
+| 📄 ファイル名 | 📝 説明 |
+|:-------------------------------|:-------------------------------------------------------------------------------------------|
+| `InteractableObject.cpp` | プレイヤーが近づくとUI（Eで拾う）を表示し、離れると非表示にするアクターの実装。SphereComponentとWidgetComponentを使って制御。 |
+| `InteractableObject.h` | `InteractableObject.cpp`のヘッダーファイル。ウィジェット・判定用Sphere・オーバーラップ関数などを宣言。 |
+| `LeftOrRightOrBothDoorMovement.cpp` | ドアにタグを付けて左右のドアを個別に開閉。プレイヤーが近づき、鍵を所持していれば回転で開閉。音再生も含む。 |
+| `LeftOrRightOrBothDoorMovement.h` | ドア制御用コンポーネントのヘッダーファイル。ドアの初期回転・開閉処理・Box判定・プレイヤー取得などを定義。 |
+| `MultipleConditioDoorMover.cpp` | 複数のトリガーアクターに特定タグ（例：Gargoyle）を検出するとドアを開ける。タグ一致を判定しDoorMoverを操作。 |
+| `MultipleConditioDoorMover.h` | `MultipleConditioDoorMover.cpp`のヘッダーファイル。TriggerComponent群・比較用タグ・チェック関数を定義。 |
+| `PauseWidget.cpp` | ポーズ画面のボタン処理を実装。再開、リスタート、タイトル遷移などで入力状態やマウスカーソルの設定も制御。 |
+| `Setting.cpp` | 設定画面で戻るボタンが押されたときにUIを非表示にするアクターの処理。Tick内でウィジェットを自動で閉じる。 |
+| `Setting.h` | `Setting.cpp`のヘッダーファイル。設定画面のUI管理・ウィジェットクラス保持・可視性フラグなどを宣言。 |
+
+---
+
+| 📄 ファイル名 | 📝 説明 |
+|:-------------------------------|:-------------------------------------------------------------------------------------------|
+| `TriggerComponent.cpp` | 台座のTrigger処理を実装。オーバーラップ状況に応じて像の設置判定、ドア開閉、UI表示、コリジョン設定などを制御。 |
+| `TriggerComponent.h` | `TriggerComponent.cpp`のヘッダーファイル。メッセージ表示・ガーゴイル判定・ドア連携・複数タグ判定の変数と関数を定義。 |
+| `StoneSpecialDoorMover.cpp` | Gargoyle像が正しい台座に設置されているかを判定し、条件一致でストーンドアを開閉する処理を記述。 |
+| `StoneSpecialDoorMover.h` | 特定タグ（例：StandRed）とガーゴイル配置状態に基づいてストーンドアを制御するための変数と関数を宣言。 |
+| `SwitchMover.cpp` | スイッチ台の押下処理。プレイヤーが押せる状態の時、方向を判定しつつ物理的に動くよう設定し、障害物も判定。 |
+| `SwitchMover.h` | `SwitchMover.cpp`のヘッダーファイル。スイッチの押し判定、障害物検知、メッシュコンポーネント制御などを定義。 |
+| `TitleInOperable.cpp` | タイトル画面用のアクターで、UIのみに入力を集中させてプレイヤーの操作を完全に無効化する機能を実装。 |
+| `TitleInOperable.h` | `TitleInOperable.cpp`のヘッダーファイル。UI表示用Widgetの参照を持ち、入力制御を行うアクターとして定義。 |
+| `TitleOperation.cpp` | 「ゲーム開始」ボタン押下時に、マウスカーソルを非表示にし、プレイヤーの移動を有効にしてレベル遷移を行う。 |
+| `TitleOperation.h` | `TitleOperation.cpp`のヘッダーファイル。ボタン操作（ゲーム開始）の関数と、UIクラスの指定を行うプロパティを定義。 |
+
+#### 📌 ここまでが自分の作成したソースコードになります。
+---
+
+📌 下のファイルは Unreal Engine の [First Person Template] から自動生成されたコードをベースにしており、Epic Games の著作権表記がある点からも公式コード
+
+| 📄 ファイル名 | 📝 説明 |
+|:-------------------------------|:-------------------------------------------------------------------------------------------|
+| `MysterySolving.cpp` | ゲームモジュールのエントリーポイント。`IMPLEMENT_PRIMARY_GAME_MODULE` により起動時の処理を定義。 |
+| `MysterySolving.h` | 上記 `.cpp` に対応するモジュールヘッダーファイル。通常はプリプロセッサなど最小限の記述。 |
+| `MysterySolving.Build.cs` | プロジェクトのビルド設定ファイル。依存モジュール（UMG、Niagaraなど）を記述。 |
+| `MysterySolvingGameMode.cpp` | ゲームモードクラスの実装。デフォルトのプレイヤーキャラクタークラスの設定を行う。 |
+| `MysterySolvingGameMode.h` | `.cpp` に対応するヘッダー。`AGameModeBase` を継承し、ゲームルールの基本形を定義。 |
+| `MysterySolvingCharacter.cpp` | プレイヤーキャラの実装。移動、視点、ジャンプ、タッチ、射撃（イベントブロードキャスト）などを記述。 |
+| `MysterySolvingCharacter.h` | `.cpp` に対応するキャラ定義。カメラ、メッシュ、感度、タッチ処理、イベント委任などを含む。 |
+| `MysterySolvingProjectile.cpp` | 弾（プロジェクタイル）の挙動を定義。発射、衝突判定、反射、寿命などを設定。 |
+| `MysterySolvingProjectile.h` | 弾の定義ヘッダー。コリジョン、移動コンポーネント、`OnHit()`イベントのプロトタイプを宣言。 |
+| `TP_WeaponComponent.h` | Epic公式テンプレートからの武器発射用コンポーネント。Projectileの生成、サウンド、アニメーションを含む。 |
+| `TP_PickUpComponent.h` | Epic公式テンプレートからのピックアップ処理用Sphereコンポーネント。BeginOverlapで取得処理を発火。 |
+
+---
+
+  </details>
+</details>
+---
 ---
 # .使用アセット、BGM、SE素材及び著作権について
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
