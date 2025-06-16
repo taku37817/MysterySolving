@@ -7,7 +7,7 @@
 ---
 
 # 🎮 タイトル・ジャンル
-- ## タイトル：MysterySolving  
+- ## タイトル：MysterySolving 
 - ## ジャンル：謎解きゲーム  
 
 # 1.📖 概要
@@ -34,7 +34,8 @@
 
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
-### ✅ 開発環境
+<details>
+<summary><b>📁✅ 開発環境</b></summary>
 
 - **OS**  
   Windows11 Home (バージョン：24H2)  
@@ -56,7 +57,7 @@
   SSD 250GB  
 
 ---
-
+<details>
 ### 🧰 利用ツール・エンジン一覧
 
 ①. **Epic Games Launcher（最新）**  
@@ -105,44 +106,24 @@
 ---
 ---
 
-あなた:
-- ## 【Content（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るメインフォルダになります。）】
-- ### 📁 ディレクトリ構成（抜粋）
+| 📄 種別/接頭辞         |📝説明 |
+|----------------------|------|
+| 🔹 **.umap**         | 画面（マップ）のデータを管理している拡張子です。 |
+| 🔹 **.uasset**       | ブループリント、テクスチャ、画像、サウンドなどのアセットに使われる拡張子です。<br>💡 「`BP_`」 で始まるファイル名は「**Blueprint**」を意味します。<br>「Blueprint」とはノードベースでキャラクターの動きや条件分岐を組むことができます。<br>💡「`WBP_`」 が付いたファイルは「**Widget Blueprint**」です。<br> 「Widget Blueprint」はUI（文字、画像など）を表示・操作するための機能です。|
 
----
-<details> <summary>
-📁 /Source
-├── MysterySolving.Target.cs
-├── MysterySolvingEditor.Target.cs
-└── 📁 MysterySolving
-    ├── MysterySolving.Build.cs
-    ├── MysterySolving.cpp
-    └── MysterySolving.h
-</summary>
----
----
-
-- ### 📁 「Source」ディレクトリに含まれる構成ファイルおよびソースコードの説明
+ - ## 【Content（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るメインフォルダになります。）】
+<details>
+<summary><b>📁「Source」ディレクトリに含まれる構成ファイルおよびソースコードの説明</b></summary>
+<br>
 
 | 📄 ファイル名 | 📝 説明 |
 |---------------|--------|
 | 🔹**MysterySolving.Target.cs** | 🧠 `MysterySolvingTarget` は、Unreal Build Tool（UBT）に「ゲーム本体のビルド構成」を伝えるクラスです。<br>🛠️ ビルドツールがこのファイルを読み込み、**どのモジュールを含めるか**、**どの設定でビルドするか** を判断します。<br><br>🎮 このファイルは「**MysterySolvingというゲームを、どのモジュールで・どの設定でビルドするか**」を指定しており、**UE4/UE5 の C++プロジェクトを正しくビルドするために必要な構成要素**です。 |
 | 🔹**MysterySolvingEditor.Target.cs** | 🛠️ このファイルは、**Unreal Editor（エディタ）を拡張・開発するためのビルド設定**を Unreal Build Tool に伝える役割を持ちます。<br><br>🔹 C++プロジェクトで **エディタでのプレイや編集作業を行う際** に、このターゲットが使用されます。<br><br>🔧 目的：ゲームではなく「**開発用環境（エディタ）**」をビルドする。<br>🔧 内容：`MysterySolving` というモジュールを使用し、**エディタ用のバイナリ**を構築するために使われます。 |
 
-| 📄 種別/接頭辞         |📝説明 |
-|----------------------|------|
-| 🔹 **.umap**         | 画面（マップ）のデータを管理している拡張子です。 |
-| 🔹 **.uasset**       | ブループリント、テクスチャ、画像、サウンドなどのアセットに使われる拡張子です。<br>💡 「`BP_`」 で始まるファイル名は「**Blueprint**」を意味します。<br>「Blueprint」とはノードベースでキャラクターの動きや条件分岐を組むことができます。<br>💡「`WBP_`」 が付いたファイルは「**Widget Blueprint**」です。<br> 「Widget Blueprint」はUI（文字、画像など）を表示・操作するための機能です。|
+</details>
+<summary><b>📁 以下のファイルは、「Source/MysterySolving」ディレクトリに含まれる構成のファイルおよびソースコードになります。</b></summary>
 
-- ## 【Source（ソースコード、モジュールを格納しているファイルになります。）】
-- ### 📁 以下のファイルは、「Source」ディレクトリに含まれる構成ファイルおよびソースコードです。
-| 📄 ファイル名 | 📝 説明 |
-|---------------|--------|
-|🔹**MysterySolving.Target.cs** | 🧠 `MysterySolvingTarget` は、Unreal Build Tool（UBT）に「ゲーム本体のビルド構成」を伝えるクラスです。<br>🛠️ ビルドツールがこのファイルを読み込み、**どのモジュールを含めるか**、**どの設定でビルドするか** を判断します。<br><br>🎮 このファイルは「**MysterySolvingというゲームを、どのモジュールで・どの設定でビルドするか**」を指定しており、**UE4/UE5 の C++プロジェクトを正しくビルドするために必要な構成要素**です。 |
-|🔹**MysterySolvingEditor.Target.cs** | 🛠️ このファイルは、**Unreal Editor（エディタ）を拡張・開発するためのビルド設定**を Unreal Build Tool に伝える役割を持ちます。<br><br>🔹 C++プロジェクトで **エディタでのプレイや編集作業を行う際** に、このターゲットが使用されます。<br><br>🔧 目的：ゲームではなく「**開発用環境（エディタ）**」をビルドする。<br>🔧 内容：`MysterySolving` というモジュールを使用し、**エディタ用のバイナリ**を構築するために使われます。 |
-
-- ### 📁 以下のファイルは、「Source/MysterySolving」ディレクトリに含まれる構成のファイルおよびソースコードになります。
-- 
 ---
 # .使用アセット、BGM、SE素材及び著作権について
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
