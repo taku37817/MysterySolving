@@ -72,6 +72,10 @@
 
 <h3><a href=https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%E5%90%84%E9%A0%85%E7%9B%AE%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86>🛠上記の各インストール手順についてはこちら</a></h3>
 
+<h4>・その他自作で利用したツール</h4>
+DSP Action（有料）
+<h3><a href=https://tsugi-studio.com/web/jp/products-dspaction.html>DSP Actionの公式サイトになります。</a></h3>
+
 </details> 
 
 ---
@@ -276,24 +280,46 @@
 
   </details>
 </details>
+
 ---
 ---
-# .使用アセット、BGM、SE素材及び著作権について
+
+# .📜 使用アセット、BGM、SE素材及び著作権について
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
-## ゲームアセット
+### ・ゲームアセット
 
-Infuse Studio様「Medieval Dungeon」  
-著作権の視点では「あなたが作ったゲームの中の全体的な構成や改変部分はあなたのものだけど、元素材の権利までは渡してない」となります。
+#### Infuse Studio様「Medieval Dungeon」  
+<h3><a href="https://www.fab.com/ja/listings/c13bd0dc-ac4d-4595-b284-f81386b2e6ef">こちらがInfuse Studio様「Medieval Dungeon」のアセットへのリンクになります。</a></h3>
+
+#### 著作権の視点では「あなたが作ったゲームの中の全体的な構成や改変部分はあなたのものだけど、元素材の権利までは渡してない」となります。
 <h3><a href="https://www.unrealengine.com/ja/eula-reference/content-ja">詳細はこちらからご確認お願いいたします。</a></h3>
----
+
+### ・BGM
+・フリーBGM DOVA-SYNDROME
+かずち様「足跡迷路」
+<h3>https://dova-s.jp/bgm/play8261.html
+
+SEは自作しました。<br>
+使用ツール：DSP Action（有料）
+<h3><a href=https://tsugi-studio.com/web/jp/products-dspaction.html>DSP Actionの公式サイトになります。</a></h3>
 
 ---
+---
 
-# .アセットの保存場所
+# .自作ではない著作物の格納場所
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
+素材ファイルのダウンロードについて
+著作権上の理由から、素材ファイルはリポジトリ内ではなく、パスワード付きの「ZIP形式」で以下の場所に保管しています。
+
+#### 1.リポジトリ上部の「<>Code」タブをクリック。
+#### 2.右側の「About」の下にある「Releases」セクションをご確認ください。
+#### 3.そこにある「Bugsremain(v0.10.0)」を開くと、素材の「パスワード付き ZIPフォルダー」があります。
+ダウンロード、解凍、そしてその後の手順については、「Bugsremain(v0.10.0)」内に詳しく記載しているので、そちらをご確認のほどよろしくお願いいたします。
+<img src="https://github.com/user-attachments/assets/e84da75c-5381-4729-a479-33661a98eb6b" width="800">
 ---
+
 ---
 
 # .📥 各項目のインストール手順
