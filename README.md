@@ -12,28 +12,30 @@
 
 # 1. 【📖 概要】
 
-このプロジェクト『MysterySolving』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした、謎解きアクションゲームです。
+このプロジェクト『MysterySolving』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした、謎解きアクションゲームです🕵️‍♂️🗿
 
-本作は Unreal Engine 5 を使用して制作されており、謎解きの条件やマップ構成にこだわりを持って設計されています。
+本作は Unreal Engine 5 を使用して制作されており、謎解きの条件やマップ構成にこだわって設計されています🎮✨
 
 ゲーム内には、以下のような多彩なギミックが登場します：
 
-- 火を灯す／消すことで進行ルートが変化する  
-- 特定の色のオブジェクトを正しい場所に配置してドアを開ける  
-- 制限時間内に複数のステップを踏んでゴールを目指す  
+・🔥 火を灯す／消すことで進行ルートが変化
 
-プレイヤーは 探索 と 論理思考 を駆使して、各ステージの攻略を目指します。
+・🎨 特定の色のオブジェクトを正しい場所に配置してドアを開ける
 
-このプロジェクトは、Unreal Engine 5とC++の2024年12月18日～2025年1月24日までの学習成果を形にすることを目的として開発された作品です。
+・⏱️ 制限時間内に複数のステップを踏んでゴールを目指す
+
+プレイヤーは 探索 🧭 と 論理思考 🧠 を駆使して、各ステージの攻略を目指します。
+
+このプロジェクトは、Unreal Engine 5 と C++ の学習成果（2024年12月18日～2025年1月24日）を形にすることを目的として開発された作品です💻🛠️
 
 ---
 
 # 2. 【🖥️ 開発環境】
 
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
+<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 <details>
-<summary><b> ✅ 開発環境</b></summary>
+<summary><b> ✅ 開発環境（クリックで展開）</b></summary>
 
 - **OS**  
   Windows11 Home (バージョン：24H2)  
@@ -57,7 +59,7 @@
 </details>
 
 <details>
-<summary><b> 🧰 利用ツール・エンジン一覧 </b></summary>
+<summary><b> 🧰 利用ツール・エンジン一覧（クリックで展開） </b></summary><br>
 
 ①. **Epic Games Launcher（最新）**  
    ※Epic Games Launcherの利用自体インターネット接続が必要です。
@@ -86,8 +88,10 @@ DSP Action（有料）
 ---
 
 # . 【🛠️ 使用技術一覧】
+<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
+
 <details>
-<summary><b> 📖 詳細はこちら </b></summary>
+<summary><b> 📖 詳細はこちら（クリックで展開） </b></summary>
 
  <br>
            
@@ -106,10 +110,10 @@ DSP Action（有料）
 
 # . 【📂 ディレクトリ構成】
 
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
+<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 <details>
-<summary><b>・📁【「Config」（各エンジン内の設定ファイルを「.ini」形式で格納しているフォルダになります。）】 </b></summary>
+<summary><b>・📁【「Config」（各エンジン内の設定ファイルを「.ini」形式で格納しているフォルダになります。）】（クリックで展開） </b></summary>
 
 <br>
 
@@ -135,7 +139,7 @@ DSP Action（有料）
 </details>
 
 <details>
-<summary><b>・📁【「Content」（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るメインフォルダになります。）】</b></summary>
+<summary><b>・📁【「Content」（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るフォルダになります。）】（クリックで展開）</b></summary>
 
 <br>
 
@@ -171,16 +175,16 @@ DSP Action（有料）
 </details>
 
 <details>
-<summary><b>・📁【「Source」ディレクトリに含まれる構成ファイルおよびソースコードの説明】</b></summary>
+<summary><b>・📁【「Source」ディレクトリに含まれる構成ファイルおよびソースコードの説明】（クリックで展開）</b></summary>
 <br>
 
 | 📄 ファイル名 | 📝 説明 |
 |---------------|--------|
-| 🔹**MysterySolving.Target.cs** | 🧠 `MysterySolvingTarget` は、Unreal Build Tool（UBT）に「ゲーム本体のビルド構成」を伝えるクラスです。<br>🛠️ ビルドツールがこのファイルを読み込み、**どのモジュールを含めるか**、**どの設定でビルドするか** を判断します。<br><br>🎮 このファイルは「**MysterySolvingというゲームを、どのモジュールで・どの設定でビルドするか**」を指定しており、**UE4/UE5 の C++プロジェクトを正しくビルドするために必要な構成要素**です。 |
+| 🔹**MysterySolving.Target.cs** | 🧠こちらは、Unreal Build Tool（UBT）に「ゲーム本体のビルド構成」を伝えるクラスです。<br>🛠️ ビルドツールがこのファイルを読み込み、**どのモジュールを含めるか**、**どの設定でビルドするか** を判断します。<br><br>🎮 このファイルは「**MysterySolvingというゲームを、どのモジュールで・どの設定でビルドするか**」を指定しており、**UE4/UE5 の C++プロジェクトを正しくビルドするために必要な構成要素**です。 |
 | 🔹**MysterySolvingEditor.Target.cs** | 🛠️ このファイルは、**Unreal Editor（エディタ）を拡張・開発するためのビルド設定**を Unreal Build Tool に伝える役割を持ちます。<br><br>🔹 C++プロジェクトで **エディタでのプレイや編集作業を行う際** に、このターゲットが使用されます。<br><br>🔧 目的：ゲームではなく「**開発用環境（エディタ）**」をビルドする。<br>🔧 内容：`MysterySolving` というモジュールを使用し、**エディタ用のバイナリ**を構築するために使われます。 |
 
 <details>
-<summary><b>・📁【「Source/MysterySolving」ディレクトリに含まれる構成のファイルおよびソースコードになります。】</b></summary>
+<summary><b>・📁【「Source/MysterySolving」ディレクトリに含まれる構成のファイルおよびソースコードになります。】（クリックで展開）</b></summary>
 
 <br>
   
@@ -287,40 +291,77 @@ DSP Action（有料）
 </details>
 
 ---
+
+# . 【📜 利用素材の著作権について】
+
+<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
+
 ---
 
-# . 【📜 使用アセット、BGM、SE素材及び著作権について】
+<details>
+<summary><strong>🎮 ゲームアセットについて（クリックで展開）</strong></summary>
+  
+#### ✅ 使用アセット  
+【Infuse Studio様「Medieval Dungeon」】
 
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
-<h3><a href=""></a></h3>
+#### 🌐 配布元  
+このアセットは、Epic Games 公式のゲームアセット配布サイト  
+👉 [**Fab.com**](https://www.fab.com/ja/) にて配布されています。
 
-### ・ゲームアセット
+🔗 [「Medieval Dungeon」のアセットページはこちら](https://www.fab.com/ja/listings/c13bd0dc-ac4d-4595-b284-f81386b2e6ef)
 
-#### Infuse Studio様「Medieval Dungeon」  
-<h3><a href="https://www.fab.com/ja/listings/c13bd0dc-ac4d-4595-b284-f81386b2e6ef">こちらがInfuse Studio様「Medieval Dungeon」のアセットへのリンクになります。</a></h3>
+#### 📌 著作権に関する注意：
 
-#### 著作権の視点では「あなたが作ったゲームの中の全体的な構成や改変部分はあなたのものだけど、元素材の権利までは渡してない」となります。
-<h3><a href="https://www.unrealengine.com/ja/eula-reference/content-ja">詳細はこちらからご確認お願いいたします。</a></h3>
+> 「あなたが作成したゲーム内の構成や改変部分は制作者本人に帰属しますが、  
+> アセット自体の著作権は提供元（Infuse Studio様）に残っています。」
 
-### ・BGM
-・フリーBGM DOVA-SYNDROME
-かずち様「足跡迷路」
-<h3><a href="https://dova-s.jp/bgm/play8261.html">かずち様「足跡迷路」のページリンクになります。</a></h3>
+✅ 詳細は Epic Games の公式ガイドラインをご確認ください。  
+🔗 [EULA（Epic Gamesのコンテンツ利用規約）はこちら](https://www.unrealengine.com/ja/eula-reference/content-ja)
 
-#### 著作権の観点では『音源の著作権は作曲・制作者が保持しており、ユーザーは著作権使用料なしで音源を利用できます。利用時の著作権表示は不要ですが、音源の提供元や作曲者に対する尊重が求められます。また、音源の加工や二次的利用については制限があり、商業的利用や二次配布には一定の条件が適用されます。』
-<h3><a href="https://dova-s.jp/_contents/license/">こちらは『フリーBGM DOVA-SYNDROME』の『ライセンス』に関する詳細リンクです。詳しくは、こちらからご確認いただきますようお願いいたします。</a></h3>
-<h3><a href="https://dova-s.jp/_contents/agreement/">こちらは『フリーBGM DOVA-SYNDROME』の『利用規約』に関する詳細リンクです。詳しくは、こちらからご確認いただきますようお願いいたします。</a></h3>
-<h3><a href="https://dova-s.jp/_contents/author/profile055.html">『かずち様』の『素材利用条件』関する詳細リンクです。詳しくは、こちらからご確認いただきますようお願いいたします。</a></h3>
+---
+
+</details>
+
+---
+
+<details>
+<summary><strong>🎵 BGMについて（クリックで展開）</strong></summary>
+
+### 使用BGM  
+【かずち様「足跡迷路」】
+
+### 配布元  
+本作では、フリーBGMサイト  
+👉 [**DOVA-SYNDROME**](https://dova-s.jp/) より配布されている  
+かずち様の楽曲「足跡迷路」を使用しています。
+
+🔗 [「足跡迷路」のBGMページはこちら](https://dova-s.jp/bgm/play8261.html)
+
+### 📌 著作権に関する注意：
+
+> 「音源の著作権は作曲者に帰属しており、ユーザーは著作権使用料なしで音源を利用できます。  
+> ただし、作曲者への敬意や利用目的の遵守が求められます。  
+> また、加工・再配布・商用利用には制限があるため、条件の確認が必要です。」
+
+### 🔗 詳細リンク：
+
+- [🎧 DOVA-SYNDROME ライセンス](https://dova-s.jp/_contents/license/)  
+- [📜 DOVA-SYNDROME 利用規約](https://dova-s.jp/_contents/agreement/)  
+- [🧑‍🎼 かずち様の素材利用条件ページ](https://dova-s.jp/_contents/author/profile055.html)
+
+</details>
+
+
+---
 
 #### ・SEは自作しました。<br>
 使用ツール：DSP Action（有料）
-<h3><a href=https://tsugi-studio.com/web/jp/products-dspaction.html>DSP Actionの公式サイトになります。</a></h3>
+<h4><a href=https://tsugi-studio.com/web/jp/products-dspaction.html>DSP Actionの公式サイトになります。</a></h4>
 
----
 ---
 
 # . 【🛡️ 自作ではない著作物の格納場所】
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
+<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 素材ファイルのダウンロードについて
 著作権上の理由から、素材ファイルはリポジトリ内ではなく、パスワード付きの「ZIP形式」で以下の場所に保管しています。
@@ -329,29 +370,38 @@ DSP Action（有料）
 #### 2.右側の「About」の下にある「Releases」セクションをご確認ください。
 #### 3.そこにある「Bugsremain(v0.10.0)」を開くと、素材の「パスワード付き ZIPフォルダー」があります。
 ダウンロード、解凍、そしてその後の手順については、「Bugsremain(v0.10.0)」内に詳しく記載しているので、そちらをご確認のほどよろしくお願いいたします。
+
 <img src="https://github.com/user-attachments/assets/e84da75c-5381-4729-a479-33661a98eb6b" width="800">
 
-#### ・自作したSE音源はリポジトリ内のディレクトリにプッシュしています。
+### ※自作したSE音源はリポジトリ内のディレクトリにプッシュしています。
 ---
 
 ---
 
 # . 【📥 各項目のインストール手順】
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
+<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 ---
+<details>
+<summary><b>②. Unreal Engine 5.0.3　（クリックで展開）</b></summary>
+<br>
+  
+[Launcherのダウンロードリンク](https://store.epicgames.com/ja/download)
 
-### ②. Unreal Engine 5.0.3
-
-①のEpic Games Launcherから「Unreal Engine 5.0.3 」をインストールします。
-
-1. **Epic Games Launcher** を起動し、「**Unreal Engine**」タブを選択  
-2. 「**ライブラリ**」→「**Engineバージョン⊞**」から **5.0.3** を選択し、「**インストール**」をクリック  
-3. 「**オプション**」から必要な機能を追加  
-4. 「**参照**」でインストール先を変更できます（※変更しない場合はそのままでOK）  
-5. オプションを追加後、「インストール開始」
+①のEpic Games Launcherから「Unreal Engine 5.0.3 」をインストールします。」
+<h3>※❗Epic Games Launcher自体の利用はインターネット必須になります。</h3>
+  
+1. **Epic Games Launcher** を起動し、「**Unreal Engine**」タブを選択
+2. 「**ライブラリ**」
+3. 「**Engineバージョン⊞**」
+4. 「**5.0.3**」 を選択し
+5. 「**インストール**」をクリック
+6. 「**オプション**」から必要な機能を追加　📌**補足：**下の方に追加オプション情報（画像つき）を記載しています。
+7. 「**参照**」でインストール先を変更できます（※変更しない場合はそのままでOK）  
+8. オプションを追加後、「インストール開始」
 
 📷 **インストール手順の参考画像：**  
+
 <img src="https://github.com/user-attachments/assets/1b96a7e0-00fb-4d78-946b-31be6f3e91b2" alt="UnrealEngineバージョンインストールについて" width="700"><br>
 <img src="https://github.com/user-attachments/assets/a1695a20-d14b-4984-ae02-e6c0d3b60176" alt="UnrealEngineバージョンインストール、初期のオプション変更について" width="700"><br>
 
@@ -368,8 +418,11 @@ DSP Action（有料）
 間違えて「Epic Game」や「Epic Gemas」などにしないように注意！
 
 ---
+</details>
 
-# ③. Visual Studio Installer
+<details>
+<summary><b>③. Visual Studio Installer　（クリックで展開）</b></summary>
+<br>
 
 [公式リリース履歴](https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/release-history#release-dates-and-build-numbers)より「17.13.1（2025年2月19日）」を「ビルドツール」からダウンロードして使用してます。 
 
@@ -419,8 +472,11 @@ DSP Action（有料）
 - MSVC v143 - VS 2022 C++ x64/x86 ビルドツール（v14.32–17.2）（サポート対象外）  
 
 ---
+</details>
 
-# ⑤. Visual Studio Code（1.100.3）
+<details>
+<summary><b>⑤. Visual Studio Code（1.100.3)（クリックで展開）</b></summary>
+<br>
 
 [ダウンロードリンク](https://code.visualstudio.com/updates/v1_100)
 
@@ -434,6 +490,9 @@ DSP Action（有料）
 - Japanese Language Pack for Visual Studio Code（日本語化用）
 
 ---
+</details>
+
+
 # .リポジトリ「ダウンロード」または「クローン」後のフォルダー移動の手順
 
 ---
