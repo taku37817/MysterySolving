@@ -6,11 +6,11 @@
 
 ---
 
-# 🎮 タイトル・ジャンル
+# 0. 【🎮 タイトル・ジャンル】
 - ## タイトル：MysterySolving 
 - ## ジャンル：謎解きゲーム  
 
-# 1.📖 概要
+# 1. 【📖 概要】
 
 このプロジェクト『MysterySolving』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした、謎解きアクションゲームです。
 
@@ -28,7 +28,7 @@
 
 ---
 
-# 2.🖥️ 開発環境
+# 2. 【🖥️ 開発環境】
 
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
@@ -61,14 +61,19 @@
 
 ①. **Epic Games Launcher（最新）**  
    ※Epic Games Launcherの利用自体インターネット接続が必要です。
+   [ダウンロードリンク](https://store.epicgames.com/ja/download)
 
 ②. **Unreal Engine：5.0.3**
+・Launcherからダウンロードを行います。
 
 ③. **Visual Studio Installer**
+[公式のインストーラーのインストールリンク](https://visualstudio.microsoft.com/ja/downloads/)
 
-④. **Visual Studio Community 2022：17.13.1** (開発ワークロードのオプション及び個別コンポーネント追加あり)
+④. **Visual Studio Community 2022：17.13.1** (開発ワークロードのオプション及び個別コンポーネント追加あり)<br>
+[公式リリース履歴](https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/release-history#release-dates-and-build-numbers)より「17.13.1（2025年2月19日）」を「ビルドツール」からダウンロードして使用してます。 
 
 ⑤. **Visual Studio Code：1.100.3（拡張機能あり）**
+[ダウンロードリンク](https://code.visualstudio.com/updates/v1_100)
 
 <h3><a href=https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%E5%90%84%E9%A0%85%E7%9B%AE%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86>🛠上記の各インストール手順についてはこちら</a></h3>
 
@@ -80,7 +85,7 @@ DSP Action（有料）
 
 ---
 
-# .🛠️ 使用技術一覧
+# . 【🛠️ 使用技術一覧】
 <details>
 <summary><b> 📖 詳細はこちら </b></summary>
 
@@ -99,7 +104,7 @@ DSP Action（有料）
 
 ---
 
-# .📂 ディレクトリ構成
+# . 【📂 ディレクトリ構成】
 
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
@@ -284,8 +289,10 @@ DSP Action（有料）
 ---
 ---
 
-# .📜 使用アセット、BGM、SE素材及び著作権について
+# . 【📜 使用アセット、BGM、SE素材及び著作権について】
+
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
+<h3><a href=""></a></h3>
 
 ### ・ゲームアセット
 
@@ -305,15 +312,14 @@ DSP Action（有料）
 <h3><a href="https://dova-s.jp/_contents/agreement/">こちらは『フリーBGM DOVA-SYNDROME』の『利用規約』に関する詳細リンクです。詳しくは、こちらからご確認いただきますようお願いいたします。</a></h3>
 <h3><a href="https://dova-s.jp/_contents/author/profile055.html">『かずち様』の『素材利用条件』関する詳細リンクです。詳しくは、こちらからご確認いただきますようお願いいたします。</a></h3>
 
-
-SEは自作しました。<br>
+#### ・SEは自作しました。<br>
 使用ツール：DSP Action（有料）
 <h3><a href=https://tsugi-studio.com/web/jp/products-dspaction.html>DSP Actionの公式サイトになります。</a></h3>
 
 ---
 ---
 
-# .自作ではない著作物の格納場所
+# . 【🛡️ 自作ではない著作物の格納場所】
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 素材ファイルのダウンロードについて
@@ -324,11 +330,13 @@ SEは自作しました。<br>
 #### 3.そこにある「Bugsremain(v0.10.0)」を開くと、素材の「パスワード付き ZIPフォルダー」があります。
 ダウンロード、解凍、そしてその後の手順については、「Bugsremain(v0.10.0)」内に詳しく記載しているので、そちらをご確認のほどよろしくお願いいたします。
 <img src="https://github.com/user-attachments/assets/e84da75c-5381-4729-a479-33661a98eb6b" width="800">
+
+#### ・自作したSE音源はリポジトリ内のディレクトリにプッシュしています。
 ---
 
 ---
 
-# .📥 各項目のインストール手順
+# . 【📥 各項目のインストール手順】
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h2>
 
 ---
