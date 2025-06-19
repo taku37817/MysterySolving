@@ -2,7 +2,7 @@
 
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#1%E6%A6%82%E8%A6%81">1.概要</a></h2>
 <h2><a href=https://github.com/taku37817/MysterySolving/blob/RestorationBranch/README.md#2%EF%B8%8F-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83>2.開発環境</a></h2>
-<h2><a href=https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%E5%90%84%E9%A0%85%E7%9B%AE%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86>6.各インストール手順</a></h2>
+<h2><a href=>6.各インストール手順</a></h2>
 
 ---
 
@@ -37,24 +37,24 @@
 <details>
 <summary><b> ✅ 開発環境（クリックで展開）</b></summary>
 
-- **OS**  
-  Windows11 Home (バージョン：24H2)  
-  OSビルド：26100.4202  
-  システムの種類：x64-ベース PC  
-  エクスペリエンス：Windows 機能エクスペリエンス パック 1000.26100.107.0  
+**▼ OS**  
+ - Windows11 Home (バージョン：24H2)  
+ - OSビルド：26100.4202  
+ - システムの種類：x64-ベース PC  
+ - エクスペリエンス：Windows 機能エクスペリエンス パック 1000.26100.107.0  
 
-- **メモリ**  
-  32GB DDR4  
+**▼ メモリ**  
+ - 32GB DDR4  
 
-- **CPU**  
-  Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz（4コア8スレッド）  
+**▼ CPU**  
+ - Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz（4コア8スレッド）  
 
-- **GPU**  
-  Intel(R) UHD Graphics 630  
-  NVIDIA GeForce GTX 1050  
+**▼ GPU**  
+ - Intel(R) UHD Graphics 630  
+ - NVIDIA GeForce GTX 1050  
 
-- **ストレージ**  
-  SSD 250GB  
+**▼ ストレージ**  
+ - SSD 250GB  
 
 </details>
 
@@ -87,7 +87,7 @@ DSP Action（有料）
 
 ---
 
-# . 【🛠️ 使用技術一覧】
+# 3. 【🛠️ 使用技術一覧】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 <details>
@@ -108,7 +108,7 @@ DSP Action（有料）
 
 ---
 
-# . 【📂 ディレクトリ構成】
+# 4. 【📂 ディレクトリ構成】
 
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
@@ -139,27 +139,22 @@ DSP Action（有料）
 </details>
 
 <details>
-<summary><b>・📁【「Content」（マップ、ブループリント、テクスチャ、サウンドなどのアセットが入るフォルダになります。）】（クリックで展開）</b></summary>
+<summary><b>・📁「Content」フォルダについて（クリックで展開）</b></summary>
 
 <br>
 
-  <details>
-  <summary><b>&nbsp;&nbsp;&nbsp;&nbsp;🔸初めにこのディレクトリ構成の「拡張子」について。</b></summary>
+---
 
-<br>
+### 🔸 拡張子について
 
 | 📄 種別/接頭辞         |📝説明 |
 |----------------------|------|
 | 🔹 **.umap**         | 画面（マップ）のデータを管理している拡張子です。 |
-| 🔹 **.uasset**       | ブループリント、テクスチャ、画像、サウンドなどのアセットに使われる拡張子です。<br>💡 「`BP_`」 で始まるファイル名は「**Blueprint**」を意味します。<br>「Blueprint」とはノードベースでキャラクターの動きや条件分岐を組むことができます。<br>💡「`WBP_`」 が付いたファイルは「**Widget Blueprint**」です。<br> 「Widget Blueprint」はUI（文字、画像など）を表示・操作するための機能です。|
+| 🔹 **.uasset**       | ブループリント、テクスチャ、画像、サウンドなどのアセットに使われる拡張子です。<br>💡 「`BP_`」 で始まるファイル名は「**Blueprint**」を意味します。<br>「Blueprint」とはノードベースでキャラクターの動きや条件分岐を組むことができます。<br>💡「`WBP_`」 が付いたファイルは「**Widget Blueprint**」です。<br> 「Widget Blueprint」はUI（文字、画像など）を表示・操作するための機能です。
 
-<br>
+---
 
-</details>
-<details>
-  <summary><b>&nbsp;&nbsp;&nbsp;&nbsp;🔸 UnrealEngine公式のテンプレートから生成されたフォルダーについて。</b></summary>
-
- <br>
+### 🔸 テンプレートから生成されたフォルダーについて
 
 | 📁 フォルダ名 | 種別 | 説明 |
 |:-------------|:------|:------|
@@ -170,9 +165,8 @@ DSP Action（有料）
 | _ExternalActors_/FirstPerson/Maps/FirstPersonMap | 🎮 テンプレート由来 | World Partition により自動生成されたアクター配置情報 |
 | _ExternalObjects_/FirstPerson/Maps/FirstPersonMap | 🎮 テンプレート由来 | World Partition のオブジェクト定義（レベル内構成情報） |
 
- <br>
- </details>
 </details>
+
 
 <details>
 <summary><b>・📁【「Source」ディレクトリに含まれる構成ファイルおよびソースコードの説明】（クリックで展開）</b></summary>
@@ -292,7 +286,7 @@ DSP Action（有料）
 
 ---
 
-# . 【📜 利用素材の著作権について】
+# 5. 【📜 利用素材の著作権について】
 
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
@@ -360,7 +354,7 @@ DSP Action（有料）
 
 ---
 
-# . 【🛡️ 自作ではない著作物の格納場所】
+# 6. 【🛡️ 自作ではない著作物の格納場所】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 素材ファイルのダウンロードについて
@@ -378,7 +372,7 @@ DSP Action（有料）
 
 ---
 
-# . 【📥 各項目のインストール手順】
+# 7. 【📥 各項目のインストール手順】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 ---
@@ -434,6 +428,10 @@ DSP Action（有料）
 2. 「C++によるデスクトップ開発」  
 3. 「.NET デスクトップ開発」  
 
+<img src="https://github.com/user-attachments/assets/836be6be-4f52-4ee4-8fc3-8cd06800b9a5" alt="追加ワークロールについて①" width="700"><br>
+<img src="https://github.com/user-attachments/assets/b286d5e0-3fe3-43a3-bd4c-a46d56ec4371" alt="追加ワークロールについて②、③" width="700"><br>
+
+<h3>⚠️インストーラーの項目を上から順に見た場合と、画像の表示順が異なっていますが、インストールの詳細（オプション）の確認作業の都合により、意図的に順序を変更して記載しています。</h3>
 ---
 
 #### ✅ インストール詳細の「オプション」確認（ワークロード①）
@@ -452,7 +450,7 @@ DSP Action（有料）
 - Unreal Engine のインストーラー  
 - 任意：Unreal Engine 用 Android Visual Studio Tools  
 
-> ⚠️ ワークロード②と③に関しては、このあと「個別コンポーネント」から追加するので、**インストール詳細の設定は変更しなくて大丈夫**です。
+> ⚠️ ワークロード②と③に関しては、このあと「個別コンポーネント」から追加するので、**インストールの詳細（オプション）の設定は変更しなくて大丈夫**です。
 
 
 #### 🧩 個別コンポーネントから手動で追加する項目について
@@ -492,7 +490,60 @@ DSP Action（有料）
 ---
 </details>
 
+---
 
-# .リポジトリ「ダウンロード」または「クローン」後のフォルダー移動の手順
+# 8.📥 クローン・ZIPダウンロード後の注意事項
+<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
+
+## ⚠️ **プロジェクトをクローンまたはZIPでダウンロードする際の重要な注意点**
+
+❌ 日本語・全角文字を含むフォルダ名・パス名は使用しないでください。  
+
+➡ Unreal Engine・Visual Studioでビルドできなくなる可能性があります。  
+
+🖼️ 以下のようなエラーメッセージが表示されることがあります：  
+<img src="https://github.com/user-attachments/assets/70e2db66-79ba-4ff3-8526-033a9041c152" alt="エラーメッセージについて" width="700" />  
+<h3>例）C:/Project/MysterySolving/のようにしてください。</h3>  
+
+---
+
+<details>
+<summary><b>📌 上記エラー画像は他の原因でも表示されることがあります（クリックで展開）</b></summary>
+
+### 🔍 原因の候補：
+- Visual StudioまたはVisual Studio Codeの環境が壊れている、設定不足
+- 必要な「C++のワークロード」や「Unreal Engine関連の拡張」が不足している
+- プロジェクト内のC++コードにビルドエラーがある
+- 最後に編集した .cpp や .h ファイルに構文ミスがある
+- Unreal Engine と Visual Studio のバージョンが不一致
+- 外部アセットやプラグインの不整合
+
+### ✅ 対処方法（優先順）：
+1. Visual StudioまたはVisual Studio Codeなどから手動で再ビルド（`Ctrl + Shift + B`）
+2. `.uproject` を右クリック → 「Generate Visual Studio project files」
+3. `.sln` を開いて、Development Editor ターゲットでビルド
+4. Unreal Engine のバージョン確認
+5. 使用中のツールチェインの対応バージョン確認
+6. 編集した `.cpp` / `.h` を見直す（#include や構文エラーなど）
+7. Visual Studio のワークロード確認：
+   - ✅ C++によるゲーム開発
+   - ✅ .NETデスクトップ開発
+
+</details>
+
+---
+
+## 🚀 プロジェクト起動前の作業手順（初回限定）
+
+プロジェクトフォルダ：`C:/Project/MysterySolving/` を例にした場合
+
+1. `MysterySolving.uproject` を右クリック  
+2. 「その他のオプションを確認」→ **「Generate Visual Studio project files」** を実行  
+3. 生成された `MysterySolving.code-workspace` を **Visual Studio Code** で開く  
+4. メニューの「…（三点リーダー）」 → 「ターミナル」 → **「ビルドタスクの実行…」**  
+5. ✅ `MysterySolvingEditor Win64 Development Build` を選択  
+　　⚠️ 「Editor」がついていない方（`MysterySolving Win64 Development Build`）と間違えないように注意！  
+6. `MysterySolving.uproject` を開く  
+7. 初回起動時に「YAS」か「NO」が表示されることがありますが、**「YAS」で大丈夫です。**
 
 ---
