@@ -1,8 +1,14 @@
 # 目次
 
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#1%E6%A6%82%E8%A6%81">1.概要</a></h2>
-<h2><a href=https://github.com/taku37817/MysterySolving/blob/RestorationBranch/README.md#2%EF%B8%8F-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83>2.開発環境</a></h2>
-<h2><a href=>6.各インストール手順</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#0--%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%AB">0.🎮タイトル・ジャンル</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#1--%E6%A6%82%E8%A6%81">1.📖概要</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#2-%EF%B8%8F-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">2.🖥️開発環境</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#3-%EF%B8%8F-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93%E4%B8%80%E8%A6%A7">3.🛠️使用技術一覧</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#4--%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90">4.📂ディレクトリ構成</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#5--%E5%88%A9%E7%94%A8%E7%B4%A0%E6%9D%90%E3%81%AE%E8%91%97%E4%BD%9C%E6%A8%A9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">5.📜利用素材の著作権について</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%EF%B8%8F-%E8%87%AA%E4%BD%9C%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E8%91%97%E4%BD%9C%E7%89%A9%E3%81%AE%E6%A0%BC%E7%B4%8D%E5%A0%B4%E6%89%80">6.🛡️自作ではない著作物の格納場所</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#7--%E5%90%84%E9%A0%85%E7%9B%AE%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86">7.📥各項目のインストール手順</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#8-%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3zip%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E5%BE%8C%E3%81%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85">8.📥クローン・ZIＰダウンロード後の注意と起動手順</a></h2>
 
 ---
 
@@ -492,7 +498,7 @@ DSP Action（有料）
 
 ---
 
-# 8.📥 クローン・ZIPダウンロード後の注意事項
+# 8.【📥 クローン・ZIＰダウンロード後の注意と起動手順】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 ## ⚠️ **プロジェクトをクローンまたはZIPでダウンロードする際の重要な注意点**
