@@ -1,5 +1,5 @@
 # 目次
-以下の項目はクリックでジャンプできます。
+以下は項目クリックでジャンプできます。
 
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#0--%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%AB">0.🎮タイトル・ジャンル</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#1--%E6%A6%82%E8%A6%81">1.📖概要</a></h2>
