@@ -40,8 +40,6 @@
 # 2. 【🖥️ 開発環境】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
-<h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
-
 <details>
 <summary><b> ✅ 開発環境（クリックで展開）</b></summary>
 
