@@ -14,7 +14,7 @@
 ---
 
 # 0. 【🎮 タイトル・ジャンル】
-- ## タイトル：MysterySolving 
+- ## タイトル：Mystery Solving Dungeon 
 - ## ジャンル：謎解きゲーム  
 
 # 1. 【📖 概要】
