@@ -20,7 +20,7 @@
 # 1. 【📖 概要】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
-このプロジェクト『MysterySolving』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした、謎解きアクションゲームです🕵️‍♂️🗿
+このプロジェクト『Mystery Solving Dungeon』は、プレイヤーが制限時間内に複数の謎を解き、銅像をゴールまで運ぶことを目的とした、謎解きアクションゲームです🕵️‍♂️🗿
 
 本作は Unreal Engine 5 を使用して制作されており、謎解きの条件やマップ構成にこだわって設計されています🎮✨
 
