@@ -338,28 +338,46 @@ DSP Action（有料）
 <details>
 <summary><strong>🎵 BGMについて（クリックで展開）</strong></summary>
 
-### 使用BGM  
-【かずち様「足跡迷路」】
+### 🎧 BGM配布元・著作権について
 
-### 配布元  
-本作では、フリーBGMサイト  
-👉 [**DOVA-SYNDROME**](https://dova-s.jp/) より配布されている  
-かずち様の楽曲「足跡迷路」を使用しています。
+本作では以下の2つの配布元から音源を使用しています。
 
-🔗 [「足跡迷路」のBGMページはこちら](https://dova-s.jp/bgm/play8261.html)
+---
 
-### 📌 著作権に関する注意：
+#### 🟦 【1】DOVA-SYNDROME 様（フリーBGM配布サイト）
 
-> 「音源の著作権は作曲者に帰属しており、ユーザーは著作権使用料なしで音源を利用できます。  
-> ただし、作曲者への敬意や利用目的の遵守が求められます。  
-> また、加工・再配布・商用利用には制限があるため、条件の確認が必要です。」
+🔗 [公式サイト](https://dova-s.jp/)  
+🔗 [ライセンス](https://dova-s.jp/_contents/license/) / [利用規約](https://dova-s.jp/_contents/agreement/)
 
-### 🔗 詳細リンク：
+> ※音源の著作権は各作曲者に帰属します。  
+> 無償で利用可能ですが、利用条件・クレジット表記の確認が必要です。  
+> 一部、商用利用・改変・再配布には制限がある場合があります。
 
-- [🎧 DOVA-SYNDROME ライセンス](https://dova-s.jp/_contents/license/)  
-- [📜 DOVA-SYNDROME 利用規約](https://dova-s.jp/_contents/agreement/)  
-- [🧑‍🎼 かずち様の素材利用条件ページ](https://dova-s.jp/_contents/author/profile055.html)
+---
 
+#### 🟨 【2】Suno 様（AI生成BGMサービス）
+
+🔗 [公式サイト](https://suno.com/)  
+🔗 [利用規約（Terms of Service）](https://suno.com/terms)
+
+> - **無料プラン**：非商用利用のみ可能  
+> - **有料プラン（Pro以上）**：商用利用が可能  
+> - 著作権保護の対象外となる場合もあるため、利用には注意が必要  
+> - 他作品との類似性や著作権侵害リスクにも十分配慮してください  
+
+---
+
+### 🎵 使用BGM一覧
+
+| 曲名 | 作曲者 | 配布元 | リンク |
+|------|--------|--------|--------|
+| 足跡迷路 | かずち 様 | DOVA-SYNDROME | [BGMページ](https://dova-s.jp/bgm/play8261.html) / [作曲者ページ](https://dova-s.jp/_contents/author/profile055.html) |
+| Dungeon 古代遺跡 | koro（ころ）様 | DOVA-SYNDROME | [BGMページ](https://dova-s.jp/bgm/play7466.html) / [作曲者ページ](https://dova-s.jp/_contents/author/profile235.html) |
+| Burning Horizon | udio 様 | Suno | [Suno公式](https://suno.com/) |
+
+
+---
+ 
 </details>
 
 
