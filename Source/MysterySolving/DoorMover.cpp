@@ -95,7 +95,13 @@ void UDoorMover::StartTimer()
 {
 	isTimerActive = true;  // タイマーがアクティブであることを示すフラグをON
 
-	GetWorld()->GetTimerManager().SetTimer(timerHandle, this, &UDoorMover::ResetTimer, 5.0f, false);  // 5秒後にResetTimerを呼ぶタイマーを設定
+	GetWorld()->GetTimerManager().SetTimer(
+		timerHandle, 				// タイマーハンドル（終了時の管理に使う）
+		this, 						// 呼び出し先（このクラス）
+		&UDoorMover::ResetTimer, 	// 終了時に呼び出す関数
+		5.0f, 						// 時間（5秒後）
+		false						// 繰り返さない（1回きり）
+	);  // 5秒後にResetTimerを呼ぶタイマーを設定
 
 	if(audioComponent && soundToPlay && !audioComponent->IsPlaying())  // 再生する音があり、現在再生していなければ
 	{
