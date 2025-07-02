@@ -125,11 +125,11 @@ void UGrabber::Grab()
 		{
 			bIsCandleGrabbedMessage = false; //キャンドル持てるメッセージ非表示
 		}
-		hitComponent->SetSimulatePhysics(true);
-		//動きを素早く減少
-		hitComponent->SetLinearDamping(0.0f);
-		hitComponent->SetAngularDamping(0.0f);
-		hitComponent->WakeAllRigidBodies();
+		// 掴んだオブジェクトの物理特性を設定
+		hitComponent->SetSimulatePhysics(true);  // 物理挙動をON
+		hitComponent->SetLinearDamping(0.0f);  // 移動減衰なし
+		hitComponent->SetAngularDamping(0.0f);  // 回転減衰なし
+		hitComponent->WakeAllRigidBodies();  // 眠っている物理状態を解除
 		// 回転ロック + 物理的な回転速度をゼロにする
 		hitComponent->BodyInstance.bLockXRotation = true; //X軸回転停止
 		hitComponent->BodyInstance.bLockYRotation = true; //Y軸回転停止
@@ -145,44 +145,53 @@ void UGrabber::Grab()
 	}
 
 }
+
+//持ってるものを放す処理
 void UGrabber::Release()
 {
-	UPhysicsHandleComponent* physicsHandle = GetPhysicsHandle();
-	isBronzeStatueGrabbed = false; //想像持てるメッセージ非表示
-	bIsCandleGrabbedMessage = true; //キャンドル持てるメッセージ表示
-	if(physicsHandle && physicsHandle->GetGrabbedComponent())
+	UPhysicsHandleComponent* physicsHandle = GetPhysicsHandle();  // 物理ハンドル取得
+	isBronzeStatueGrabbed = false;  // ブロンズ像のフラグをOFF
+	bIsCandleGrabbedMessage = true; // キャンドルのメッセージ表示フラグをON
+
+	if(physicsHandle && physicsHandle->GetGrabbedComponent())  // 掴んでいる対象があるなら
 	{
-		AActor* grabberActor = physicsHandle->GetGrabbedComponent()->GetOwner();
-		grabberActor->Tags.Remove("Grabbed");
-		physicsHandle->ReleaseComponent();
+		AActor* grabberActor = physicsHandle->GetGrabbedComponent()->GetOwner();  // 掴んだアクターを取得
+		grabberActor->Tags.Remove("Grabbed");  // 「Grabbed」タグを削除
+		physicsHandle->ReleaseComponent();  // 掴み解除
 	}
 }
+
 UPhysicsHandleComponent* UGrabber::GetPhysicsHandle() const
 {
-	UPhysicsHandleComponent* result = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	if(result == nullptr)
+	UPhysicsHandleComponent* result = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();  // 所有者から物理ハンドルを取得
+
+	if(result == nullptr)  // なければログ出力
 	{
-		UE_LOG(LogTemp, Display, TEXT("Grabber requies a UPhysicsHandleComponent,"));
+		UE_LOG(LogTemp, Display, TEXT("Grabber requies a UPhysicsHandleComponent,"));  // 警告ログ
 	}
-	return result;
+	return result;  // ハンドルを返す（nullptrの可能性あり）
 }
+
 
 bool UGrabber::GetGrabberbleInReach(FHitResult& outHitResult) const
 {
-	FVector start = GetComponentLocation();
-	FVector end = start + GetForwardVector() * maxGetGrabDistance;
-	DrawDebugLine(GetWorld(), start, end, FColor::Red);
-	DrawDebugSphere(GetWorld(), end, 10, 10, FColor::Blue, false, 5);
+	FVector start = GetComponentLocation();  // プレイヤーの現在位置
+	FVector end = start + GetForwardVector() * maxGetGrabDistance;  // 前方方向に最大距離分進んだ場所
 
-	FCollisionShape Sphere = FCollisionShape::MakeSphere(grablRedius);
+	// デバッグ表示（赤線：射線、青球：終点）
+	DrawDebugLine(GetWorld(), start, end, FColor::Red);  // レイキャスト線を描画
+	DrawDebugSphere(GetWorld(), end, 10, 10, FColor::Blue, false, 5);  // 終点に青いスフィアを表示
+
+	// 球状の衝突判定（Sweep）
+	FCollisionShape Sphere = FCollisionShape::MakeSphere(grablRedius);  // 半径指定で球形を作成
 	return GetWorld()->SweepSingleByChannel(
-		outHitResult,
-		start, end,
-		FQuat::Identity,
-		ECC_GameTraceChannel2,
-		Sphere);
-
+		outHitResult,  // ヒット情報を出力
+		start, end,  // 始点 → 終点
+		FQuat::Identity,  // 回転なし
+		ECC_GameTraceChannel2,  // カスタムのコリジョンチャンネルを指定
+		Sphere);  // 球状の判定を使う
 }
+
 
 // TArray<AActor*> UGrabber::IsActorWithTagDistance(const FName tagCheck)
 // {
@@ -236,18 +245,25 @@ void UGrabber::OtherMessagesDisplayJudge()
 			return;}
 		if(boxComponent && boxComponent->IsOverlappingActor(overlapActor))
 		{
+			// シルバーキーにオーバーラップ中 → 該当フラグをON、それ以外ならOFF
 			if(overlapActor->ActorHasTag("SilverKey"))
 				bIsKeyGrabbedMessage[0] = true;
 			else
 				bIsKeyGrabbedMessage[0] = false;
+
+			// ゴールドキーにオーバーラップ中 → 該当フラグをON、それ以外ならOFF
 			if(overlapActor->ActorHasTag("GoldKey"))
 				bIsKeyGrabbedMessage[1] = true;
 			else
 				bIsKeyGrabbedMessage[1] = false;
+
+			// ブラウンキーにオーバーラップ中 → 該当フラグをON、それ以外ならOFF
 			if(overlapActor->ActorHasTag("BrownKey"))
 				bIsKeyGrabbedMessage[2] = true;
 			else
 				bIsKeyGrabbedMessage[2] = false;
+				
+			// ブロンズ像にオーバーラップ中 → 表示用フラグON、それ以外はOFF				
 			if(overlapActor->ActorHasTag("BronzeStatue"))
 				bIsBronzeStatueGrabbedMessage = true;
 			else
