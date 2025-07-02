@@ -38,3 +38,10 @@ void UTitleOperation::OnGameStartButtonClicked()
     UGameplayStatics::OpenLevel(this, FName("Dungeon")); // "Dungeon" レベルに遷移する
     UE_LOG(LogTemp, Display, TEXT("ゲーム開始！")); // デバッグログ出力
 }
+
+// 設定ボタンが押されたときの処理
+void UTitleOperation::OnSettingButtonClicked() 
+{
+    UGameplayStatics::OpenLevel(this, FName("SetteingLevel")); // "SetteingLevel" に遷移する
+    UE_LOG(LogTemp, Display, TEXT("設定画面へ！")); // デバッグログ出力
+}

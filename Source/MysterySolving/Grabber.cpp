@@ -75,7 +75,19 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 			// UGameplayStatics::PlaySoundAtLocation(this, ReleaseSound, GetComponentLocation());
 		}
 	}
-	playerAndGrabbedDistanceJudge = true;
+		gargoyleGrabbedMessageDisplayJudgeVariable;
+		standGrabbedMessageDisplayJudgeVariable;
+		// メッセージ表示フラグのログ出力（デバッグ用）
+		UE_LOG(LogTemp, Warning, TEXT("gargoyleGrabbedMessageDisplayJudgeVariable: %s"), gargoyleGrabbedMessageDisplayJudgeVariable ? TEXT("true") : TEXT("false"));
+		UE_LOG(LogTemp, Warning, TEXT("standGrabbedMessageDisplayJudgeDisplayJudgeVariable: %s"), standGrabbedMessageDisplayJudgeVariable ? TEXT("true") : TEXT("false"));
+		playerAndGrabbedDistanceJudge = true;
+	
+	// if(hitResult.bBlockingHit)
+	// {
+	// 	// 壁にぶつかったら少し押し戻す
+	// 	FVector correction = hitResult.ImpactNormal * 2.0f;  // 押し戻し量は調整
+	// 	hitActor->AddActorWorldOffset(correction, true);
+	// }
 	// ...
 }
 //持つ
@@ -184,37 +196,41 @@ bool UGrabber::GetGrabberbleInReach(FHitResult& outHitResult) const
 
 }
 
-// TArray<AActor*> UGrabber::IsActorWithTagDistance(const FName tagCheck)
-// {
-// 	TArray<AActor*> findActors;
-// 	UGameplayStatics::GetAllActorsWithTag(GetWorld(),tagCheck,findActors);
-// 	return findActors;
-// }
-// bool UGrabber::IsActorNearby(FName actorTag, FVector playerLocation)
-// {
-// 	TArray<AActor*> foundActors = IsActorWithTagDistance(actorTag);
-//     for (AActor* actor : foundActors)
-//     {
-//         if (actor && FVector::Dist(playerLocation, actor->GetActorLocation()) < messageHiddenDistance)
-//         {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
-// void UGrabber::SetStandMessageDisplayJudge()
-// {
-// 	AActor* playerActor = GetOwner();
-//     if (playerActor)
-//     {
-//         FVector playerLocation = playerActor->GetActorLocation();
-//         // isGarGoyleNear = IsActorNearby(gargoyleCheckActorTag, playerLocation);
-//     }
-//     // 近くにいるときだけメッセージ表示
-//     // gargoyleGrabbedMessageDisplayJudgeVariable = isGarGoyleNear ? gargoyleMessageDisplayJudge : false;
-// 	// UE_LOG(LogTemp, Warning, TEXT("gargoyleGrabbedMessageDisplayJudgeVariable: %s"), gargoyleGrabbedMessageDisplayJudgeVariable ? TEXT("true") : TEXT("false"));
-// 	// UE_LOG(LogTemp, Warning, TEXT("gargoyleGrabbedMessageDisplayJudgeVariable: %s"), standGrabbedMessageDisplayJudgeVariable ? TEXT("true") : TEXT("false"));
-// }
+TArray<AActor*> UGrabber::IsActorWithTagDistance(const FName tagCheck)
+{
+	TArray<AActor*> findActors;
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(),tagCheck,findActors);
+	return findActors;
+}
+bool UGrabber::IsActorNearby(FName actorTag, FVector playerLocation)
+{
+	TArray<AActor*> foundActors = IsActorWithTagDistance(actorTag);
+    
+    for (AActor* actor : foundActors)
+    {
+        if (actor && FVector::Dist(playerLocation, actor->GetActorLocation()) < messageHiddenDistance)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+void UGrabber::SetGargoyleAndStandMessageDisplayJudge(bool standMessageDisplayJudge,bool gargoyleMessageDisplayJudge)
+{
+	AActor* playerActor = GetOwner();
+    if (playerActor)
+    {
+        FVector playerLocation = playerActor->GetActorLocation();
+        isGarGoyleNear = IsActorNearby(gargoyleCheckActorTag, playerLocation);
+        isStandeNear = IsActorNearby(standCheckActorTag, playerLocation);
+    }
+
+    // 近くにいるときだけメッセージ表示
+    gargoyleGrabbedMessageDisplayJudgeVariable = isGarGoyleNear ? gargoyleMessageDisplayJudge : false;
+    standGrabbedMessageDisplayJudgeVariable = isStandeNear ? standMessageDisplayJudge : false;
+	UE_LOG(LogTemp, Warning, TEXT("gargoyleGrabbedMessageDisplayJudgeVariable: %s"), gargoyleGrabbedMessageDisplayJudgeVariable ? TEXT("true") : TEXT("false"));
+	UE_LOG(LogTemp, Warning, TEXT("gargoyleGrabbedMessageDisplayJudgeVariable: %s"), standGrabbedMessageDisplayJudgeVariable ? TEXT("true") : TEXT("false"));
+}
 
 //メッセージ表示非表示させるメソッド
 void UGrabber::OtherMessagesDisplayJudge()

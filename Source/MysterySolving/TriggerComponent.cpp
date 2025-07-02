@@ -1,3 +1,6 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
 #include "TriggerComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/Actor.h" // GetOwner() を使うために必要
@@ -15,6 +18,7 @@ void UTriggerComponent::BeginPlay()
 	Super::BeginPlay();
     UE_LOG(LogTemp, Display, TEXT("BeginPlay OK"));
     grabberChannel = ECC_GameTraceChannel2;
+    playerActor = FindActorByName(GetWorld(), TEXT("BP_Player")); //WorldにBP_Playerが存在したらplayerActorに代入
     World = GetWorld();  // ★ ここで World を取得
     if (!World)
     {
@@ -43,6 +47,7 @@ void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
     }
     OvarlapFunction();
     NotOvarlapFunction();
+    GrabbedMessageDisplayJudgeFunction();
     SetCollisionForTaggedActors(setCollisionForTaggedActorsTag);
     CheckActorTagsAndMultipleConditionsDoorMoveJudge();
     meshComponent->SetCollisionResponseToChannel(grabberChannel,standGrabbedJudge ? ECR_Block : ECR_Ignore);
@@ -125,6 +130,10 @@ void UTriggerComponent::NotOvarlapFunction()
         standGrabbedJudge = false; //SwitchMoverのSetStandPushJudge(bool)の動作がfalse
         for(AActor* actor : actors)
         {
+            if(grabberComponent && playerActor)
+            {
+                grabberComponent->SetGargoyleAndStandMessageDisplayJudge(false,true);
+            }
             if(!isItemSwitchJudge) //ドアスイッチ判定を無効だった場合
             {
                 for(AActor* doorActor : doorActors) //関連ドアアクターをループ処理
@@ -138,6 +147,47 @@ void UTriggerComponent::NotOvarlapFunction()
                 }
                 isItemSwitchJudge = true; //ドアスイッチ判定を有効
             }
+        }
+    }
+}
+
+void UTriggerComponent::GrabbedMessageDisplayJudgeFunction()
+{
+    TArray<AActor*> actors; //オーバーラップ中のアクターを格納する配列
+    GetOverlappingActors(actors); //オーバーラップしているアクターを取得
+    getAcceptableAtor = GetAcceptableActor(); //許容するアクターを取得
+    if(getAcceptableAtor)
+    {
+        for(AActor* actor : actors)
+        {
+            if (IsOverlappingActor(actor)) // 持てるようになる条件
+            {
+                if(playerActor)
+                {
+                    grabberComponent = playerActor->FindComponentByClass<UGrabber>();
+                    UE_LOG(LogTemp, Warning, TEXT("Player actor found: %s"), *playerActor->GetName());
+                }
+                else
+                {
+                    UE_LOG(LogTemp, Warning, TEXT("Player actor not found"));
+                }
+                if (grabberComponent && IsOverlappingActor(playerActor))
+                {
+                    grabberComponent->SetGargoyleAndStandMessageDisplayJudge(true, false);
+                    UE_LOG(LogTemp, Warning, TEXT("standMessageDisplayJudg Treu!"));
+                }
+                else
+                {
+                    grabberComponent->SetGargoyleAndStandMessageDisplayJudge(false, false);
+                }
+            }
+        }
+    }
+    else
+    {
+        if (grabberComponent && playerActor)
+        {
+            grabberComponent->SetGargoyleAndStandMessageDisplayJudge(false, true);
         }
     }
 }

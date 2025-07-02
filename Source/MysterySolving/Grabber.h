@@ -32,7 +32,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	//スイッチ台関連
-	void SetStandMessageDisplayJudge();
+	void SetGargoyleAndStandMessageDisplayJudge(bool standMessageDisplayJudge,bool gargoyleMessageDisplayJudge);
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MessageJudge")
 	bool standGrabbedMessageDisplayJudgeVariable = false; //スイッチ台のメッセージ表示・非表示判定（TriggerComponentの変数「standGrabbedJudge」で渡された真偽値取得）
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MessageJudge")
@@ -68,20 +68,22 @@ private:
 	bool hasHit;
 	AActor* hitActor;
 	UBoxComponent* ovarlapBox;
+	
+
+	UPROPERTY(EditAnywhere)
+	float messageHiddenDistance = 450.0f;
 	bool playerAndGrabbedDistanceJudge = false; //プレイヤーと持てるアクターとの距離判定止める
 
 	FName gargoyleCheckActorTag = "GargoyleTag"; //Gargoyleのアクタータグ「GargoyleTag」を検索するための変数
 	FName standCheckActorTag = "StandTag"; //Standのアクタータグ「StandTag」を検索するための変数
 	FName keyCheckActorTag = "Key";
-	// TArray<AActor*> IsActorWithTagDistance(const FName tagCheck); //指定したタグがあるアクターとプレイヤーとの距離計算
-	// bool isGarGoyleNear = false; //Gargoyleが近くにいるかどうか判定用
-	// bool IsActorNearby(FName actorTag, FVector playerLocation); //距離のメッセージ表示できる距離判定メソッド
+	TArray<AActor*> IsActorWithTagDistance(const FName tagCheck); //指定したタグがあるアクターとプレイヤーとの距離計算
+	bool isGarGoyleNear = false; //Gargoyleが近くにいるかどうか判定用
+	bool isStandeNear = false; //Standが近くにいるかどうか判定用
+	bool IsActorNearby(FName actorTag, FVector playerLocation); //距離のメッセージ表示できる距離判定メソッド
 
 	UDoorKeyManager* doorKeyManagerComponent;
 	UPROPERTY(EditAnywhere)
 	TArray<FName> KeyTags = { "GoldKey", "SilverKey", "BrownKey" };
 	void OtherMessagesDisplayJudge(); //メッセージ表示非表示させるメソッド
-
-	UPROPERTY(EditAnywhere)
-	float messageHiddenDistance = 450.0f; //メッセージ表示開始距離
 };

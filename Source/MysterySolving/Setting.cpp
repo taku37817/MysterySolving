@@ -4,6 +4,7 @@
 #include "Setting.h"
 #include "GameFramework/PlayerController.h"     // プレイヤーコントローラー関連クラス
 #include "Kismet/GameplayStatics.h" // プレイヤー取得やサウンド再生などの静的ユーティリティ
+#include "GetUObjectClass.h"
 
 // Sets default values
 ASetting::ASetting()

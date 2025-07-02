@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/BoxComponent.h"
 #include "DoorMover.h"
+#include "Grabber.h"
 
 #include "TriggerComponent.generated.h"
 
@@ -20,29 +21,27 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:
+public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	//スイッチ台関連
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stand")
 	bool standGrabbedJudge = false; //スイッチ台を持てるか判定
 	void GargoyleOvarlapJudge(bool argumentGargoyleOvarlapJudge); //GargoyleがOverlapしているか
-	bool gargoyleOvarlapJudge;
+	bool gargoyleOvarlapJudge = true;
 	// オーバーラップしたアクターのタグを取得
 	TArray<FName> GetOverlappingActorTags() const;
 
 	AActor* getMultipleConditioDoorMoverPrivateActor;
 	bool isMultipleConditioDoorMoverPrivateActor = false;
-
-
-
 private:
 	void OvarlapFunction();
 	void NotOvarlapFunction();
+	void GrabbedMessageDisplayJudgeFunction();
 	void SetCollisionForTaggedActors(FName targetTag);
 	void CheckActorTagsAndMultipleConditionsDoorMoveJudge();
 	FName setCollisionForTaggedActorsTag = "GargoyleTag";
-	UStaticMeshComponent* meshComponent;
+	UStaticMeshComponent* meshComponent; 
 	UPROPERTY(EditAnywhere)
 	float sphereRadius = 100.0f;
 	UPROPERTY(EditAnywhere)
@@ -61,17 +60,14 @@ private:
 	bool isItemSwitchJudge = true;
 	// UPROPERTY(EditAnywhere)
 	// bool isStandGrabbedJudge = true;
+	//スイッチ台関連
+	UGrabber* grabberComponent;
+	bool standGrabbedMessageDisplayJudge; //スイッチ台持てるかメッセージ表示判定
 	//ColisionのGrabberトレースを操作するための変数
-
 	ECollisionChannel grabberChannel;
 	UBoxComponent* gargoylePosition; //ボックスコリジョン取得変数
 
 	AActor* FindActorByName(UWorld* world, const FString& actorName); //指定した名前のアクターをワールド内で検索する関数
 	AActor* playerActor;
 	UWorld* World; //GetWorld()使用するための変数
-
-	UPROPERTY(EditAnywhere)
-	float messageHiddenDistance = 450.0f;//プレイヤーと持てるアクターとの距離
-	UPROPERTY(EditAnywhere)
-	AActor* gargoyle;//対象にしたいガーゴイルをアタッチ
 };

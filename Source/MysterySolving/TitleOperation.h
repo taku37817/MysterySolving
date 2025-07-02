@@ -16,8 +16,8 @@ public:
     UFUNCTION(BlueprintCallable) // ブループリントから呼び出せる関数にする
     void OnGameStartButtonClicked(); // 「ゲームスタート」ボタンが押された時の処理
 
-    // UFUNCTION(BlueprintCallable) // ブループリントから呼び出せる関数にする
-    // void OnSettingButtonClicked(); // 「設定」ボタンが押された時の処理
+    UFUNCTION(BlueprintCallable) // ブループリントから呼び出せる関数にする
+    void OnSettingButtonClicked(); // 「設定」ボタンが押された時の処理
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI", meta = (AllowPrivateAccess = "true")) // ウィジェットを指定するためのプロパティ
     TSubclassOf<UUserWidget> TitleWidgetClass; // 表示したいウィジェットクラス（別の UI を出したいときなど）
