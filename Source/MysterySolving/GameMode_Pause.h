@@ -30,18 +30,48 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	void Pause(); // ポーズ画面に遷移
-	
+	UFUNCTION(BlueprintCallable)
+	void ShowPauseMenu();  // 表示処理
+
+	UFUNCTION(BlueprintCallable)
+	void SettingVisible();  // 設定表示処理
+
+	UFUNCTION(BlueprintCallable)
+	void GuidVisible();  // ヒント表示処理
+
+	UFUNCTION(BlueprintCallable)
+	void OperationGuidVisible();  // 表示処理
+
 private:
 	UPROPERTY(EditAnywhere, Category = "UI")
 	TSubclassOf<UUserWidget> pauseWidgetClass; //ポーズWBP表示するUI
 
 	/** ポーズUIのインスタンス */
 	UUserWidget* pauseOverWidget;
-
-	void ShowPauseMenu();       // 表示処理
     void HidePauseMenu();       // 非表示処理	
+	 // すべてのポーズ系ウィジェット（設定・ヒント・操作）を非表示にする関数
+    void ClearAllPauseWidgets(); 
 
 
 	bool bIsPaused = false; // 現在ポーズ中かどうか
+	// --- UIのBlueprintクラス（これをCreateWidgetに使う） ---
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> settingWidgetClass;
+
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> guidVWidgetClass;
+
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> operationGuidWidgetClass;
+
+	// --- 実際に作られたウィジェットインスタンス ---
+	UPROPERTY()
+	UUserWidget* settingWidget = nullptr;
+
+	UPROPERTY()
+	UUserWidget* guidWidget = nullptr;
+
+	UPROPERTY()
+	UUserWidget* operationGuidWidget = nullptr;
 
 };

@@ -18,6 +18,40 @@ void UDoorKeyManager::BeginPlay()
 {
     Super::BeginPlay();
 
+     // 🔧 鍵タグと対応するWidgetの初期データ構造を定義
+    struct FKeyInitData
+    {
+        TArray<FName> Tags;       // 複数の鍵タグ（例：SilverKey, SilverAlt）
+        FString ClassPath;        // 対応するWidget Blueprintクラスのパス
+    };
+
+    TArray<FKeyInitData> InitList = {
+    { { TEXT("SilverKey") }, TEXT("/Game/WidgetBlueprint/SilverKey.SilverKey_C") },
+    { { TEXT("GoldKey")   }, TEXT("/Game/WidgetBlueprint/GoldKey.GoldKey_C") },
+    { { TEXT("BrownKey")  }, TEXT("/Game/WidgetBlueprint/BrownKey.BrownKey_C") }
+};
+
+
+    // 🔁 登録リストを1つずつ処理して keyWidgetClasses に追加
+    for (const FKeyInitData& Entry : InitList)
+    {
+        FKeyWidgetData Data;
+        Data.keyTags = Entry.Tags;  // 複数タグを設定（FName配列）
+
+        // Blueprint Widgetクラスをロード（存在しない場合はnullptrになる）
+        Data.keyWidgetClass = LoadClass<UUserWidget>(nullptr, *Entry.ClassPath);
+
+        // 成功した場合のみ登録（nullptrチェック）
+        if (Data.keyWidgetClass)
+        {
+            keyWidgetClasses.Add(Data);  // メンバ変数に追加
+        }
+    }
+
+    // 🔧 MessageWidget（例えばヒントメッセージUI）をロード
+    MessageWidgetClass = LoadClass<UUserWidget>(nullptr, TEXT("/Game/WidgetBlueprint/WBP_HaveKey_Message.WBP_HaveKey_Message_C"));
+    notOpenDoorMessageWidgetClass = LoadClass<UUserWidget>(nullptr, TEXT("/Game/WidgetBlueprint/WBP_Not_HaveKey_Message.WBP_Not_HaveKey_Message_C"));
+
     // 各タグごとに対応するドアを取得し、登録
     for (const FName& tag : doorTags)
     {
@@ -61,28 +95,26 @@ void UDoorKeyManager::CollectKey(FName keyTag)
 // 鍵アイコンを表示するメソッド
 void UDoorKeyManager::ShowKeyWidget(FName KeyTag)
 { 
-	 // 対応するWBPを探す
-	 for (const FKeyWidgetData& widgetData : keyWidgetClasses)
-	 {
-		 if (widgetData.keyTag == KeyTag)
-		 {
-			 // 対応するWBPを作成して表示
-			 if (widgetData.keyWidgetClass)
-			 {
-				 // 新しいWBPを作成
-				 currentKeyWidget = CreateWidget<UUserWidget>(GetWorld(), widgetData.keyWidgetClass);
- 
-				 if (currentKeyWidget)
-				 {
-					 // WBPを画面に表示
-					 currentKeyWidget->AddToViewport();
-					 currentKeyWidget->SetVisibility(ESlateVisibility::Visible);
-				 }
-			 }
-			 return; // 該当のWBPが見つかれば処理を終了
-		 }
-	 }
- 
+	  // 🔍 対応するWidgetを keyTags の中から検索
+    for (const FKeyWidgetData& widgetData : keyWidgetClasses)
+    {
+        if (widgetData.keyTags.Contains(KeyTag))  // ← ここがポイント！
+        {
+            if (widgetData.keyWidgetClass)
+            {
+                // WBPを生成
+                currentKeyWidget = CreateWidget<UUserWidget>(GetWorld(), widgetData.keyWidgetClass);
+
+                if (currentKeyWidget)
+                {
+                    currentKeyWidget->AddToViewport();
+                    currentKeyWidget->SetVisibility(ESlateVisibility::Visible);
+                }
+            }
+            return;  // 見つかったら終了
+        }
+    }
+
 	 // 見つからなかった場合は表示しない
 	 UE_LOG(LogTemp, Warning, TEXT("対応するWBPが見つかりませんでした。"));
 }
@@ -112,6 +144,16 @@ void UDoorKeyManager::TryOpenDoor()
 
     for (AActor* door : doors)
     {
+        if (!MessageWidgetInstance && MessageWidgetClass)
+        {
+            MessageWidgetInstance = CreateWidget<UUserWidget>(GetWorld(), MessageWidgetClass);
+            MessageWidgetInstance->AddToViewport();
+        }
+        if (!notOpenDoorMessageWidgetInstance && notOpenDoorMessageWidgetClass)
+        {
+            notOpenDoorMessageWidgetInstance = CreateWidget<UUserWidget>(GetWorld(), notOpenDoorMessageWidgetClass);
+            notOpenDoorMessageWidgetInstance->AddToViewport();
+        }
         // プレイヤーがドアとオーバーラップしているか確認
         if (playerActor->IsOverlappingActor(door))
         {
@@ -124,6 +166,15 @@ void UDoorKeyManager::TryOpenDoor()
                     bool hasKey = CanUseKey(tag);
                     bShowMessage = true; // E ボタン表示
                     bCanOpenDoor = hasKey; // 開閉フラグ設定
+
+                    if (MessageWidgetInstance && hasKey)
+                    {
+                        MessageWidgetInstance->SetVisibility(ESlateVisibility::Visible);
+                    }
+                    if (notOpenDoorMessageWidgetInstance && !hasKey)
+                    {
+                        notOpenDoorMessageWidgetInstance->SetVisibility(ESlateVisibility::Visible);
+                    }
 
                     // ログ出力
                     if (hasKey)
@@ -138,6 +189,17 @@ void UDoorKeyManager::TryOpenDoor()
 
                     return; // 1つのドアだけ判定したら抜ける
                 }
+            }
+        }
+        else
+        {
+            if (MessageWidgetInstance)
+            {
+                MessageWidgetInstance->SetVisibility(ESlateVisibility::Hidden);
+            }
+            if (notOpenDoorMessageWidgetInstance)
+            {
+                notOpenDoorMessageWidgetInstance->SetVisibility(ESlateVisibility::Hidden);
             }
         }
     }

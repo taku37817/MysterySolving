@@ -3,8 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "GameFramework/Actor.h" // AActorを継承
 #include "Blueprint/UserWidget.h" // ゲーム内で使う UI（UUserWidget など）を扱うため
+#include "Kismet/GameplayStatics.h" // UGameplayStatics を使うため
+#include "Sound/SoundBase.h"      // USoundBaseを使うため (SoundCueやSoundWaveの親クラス)
+#include "Components/SceneComponent.h" // USceneComponent を使うため (RootComponentとして利用)
+#include "Components/AudioComponent.h"          //オーディオ関連を利用に必要
 
 #include "GameMode_GameOver.generated.h"
 
@@ -40,6 +44,9 @@ protected:
     /** ゲームオーバーフラグ */
     bool bIsGameOver = false;
 
+    bool bHasPlayedTimeLimitSound = false; // BGM無限に再生の実行しないようにする
+
+
     /** ゲームオーバー時に表示するUIのクラス */
     UPROPERTY(EditAnywhere, Category = "UI")
     TSubclassOf<UUserWidget> gameOverWidgetClass;
@@ -64,6 +71,14 @@ protected:
 
     //クリアータイムUIのインスタンス
     UUserWidget* clearTimeWidget;
+
+      /** BGM再生用のAudioComponent */
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Audio", meta = (AllowPrivateAccess = "true"))
+    UAudioComponent* myTimeLimitAudioComponent;
+
+    /** エディタで設定するBGM */
+    UPROPERTY(EditAnywhere, Category = "Audio")
+    USoundBase* myTimeLimitSound;
 
     /** 毎秒呼ばれるタイマー関数 */
     void UpdateTimer();

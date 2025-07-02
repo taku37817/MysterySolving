@@ -13,11 +13,34 @@
 UClearTriggerComponent::UClearTriggerComponent()
 {
     PrimaryComponentTick.bCanEverTick = true; // Tick 有効
+
+	myClearIntroAudioComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("MyClearIntroAudioComponent"));
+	if (myClearIntroAudioComponent)
+	{
+		myClearIntroAudioComponent->SetupAttachment(this);
+		myClearIntroAudioComponent->bAutoActivate = false; // 勝手に再生しない
+	}
+
+    myClearLoopAudioComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("MyClearLoopAudioComponent"));
+	if (myClearLoopAudioComponent)
+	{
+		myClearLoopAudioComponent->SetupAttachment(this);
+		myClearLoopAudioComponent->bAutoActivate = false; // 勝手に再生しない
+	}
 }
 void UClearTriggerComponent::BeginPlay()
 {
     Super::BeginPlay();
     bIsCleared = false; // 初期化
+    if (myClearIntroAudioComponent && GetOwner() && GetOwner()->GetRootComponent())
+    {
+        myClearIntroAudioComponent->AttachToComponent(GetOwner()->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+    }
+    if (myClearLoopAudioComponent && GetOwner() && GetOwner()->GetRootComponent())
+    {
+        myClearLoopAudioComponent->AttachToComponent(GetOwner()->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+    }
+
 }
 
 void UClearTriggerComponent::TickComponent(float deltaTime, ELevelTick tickType, FActorComponentTickFunction* thisTickFunction)
@@ -41,7 +64,29 @@ void UClearTriggerComponent::ClearOverlapFunction()
             gameOverMode->bIsClear = true; // ゲームクリア状態に
             gameOverMode->bIsPauseJudge = false; // ポーズ解除
         }
+        // --- 音声制御処理 ---
 
+        /*クリアBGMのイントロ*/
+        if (myClearIntroAudioComponent && myClearIntroSound && !myClearIntroAudioComponent->IsPlaying())
+        {
+            myClearIntroAudioComponent->SetSound(myClearIntroSound);
+            myClearIntroAudioComponent->SetVolumeMultiplier(1.0f);
+            myClearIntroAudioComponent->bOverrideAttenuation = true;
+            myClearIntroAudioComponent->AttenuationOverrides.bAttenuate = false;
+            myClearIntroAudioComponent->Play(); // 再生開始
+            // イントロの再生時間を取得
+            float IntroDuration = myClearIntroSound->GetDuration(); // 例：5.73秒など
+
+            // IntroDuration秒後にループを再生するタイマーをセット
+            GetWorld()->GetTimerManager().SetTimer(
+                loopStartTimerHandle,                   // タイマーのハンドル（解除にも使える）
+                this,                                   // 対象（このクラスのインスタンス）
+                &UClearTriggerComponent::SwitchFromIntroToLoop, // 呼び出す関数
+                IntroDuration,                          // 待機時間（イントロの長さ）
+                false                                   // ループ再実行しない（1回だけ）
+            );
+
+        }
         APlayerController* playerController = UGameplayStatics::GetPlayerController(this, 0);
         if (playerController)
         {
@@ -73,5 +118,25 @@ void UClearTriggerComponent::ClearOverlapFunction()
                 character->GetCharacterMovement()->StopMovementImmediately(); // 移動ベクトルを強制的にゼロにして止める
             }
         }
+    }
+}
+
+void UClearTriggerComponent::SwitchFromIntroToLoop()
+{
+    // イントロ停止
+    if (myClearIntroAudioComponent && myClearIntroAudioComponent->IsPlaying())
+    {
+        myClearIntroAudioComponent->Stop();
+    }
+    //ループ開始
+    if (myClearLoopAudioComponent && myClearLoopSound)
+    {
+        myClearLoopAudioComponent->SetSound(myClearLoopSound); // ループ用の音声を設定
+        myClearLoopAudioComponent->SetVolumeMultiplier(1.0f);  // 音量最大
+        myClearLoopAudioComponent->bOverrideAttenuation = true; // 減衰設定を上書き
+        myClearLoopAudioComponent->AttenuationOverrides.bAttenuate = false; // 減衰無効
+        myClearLoopAudioComponent->Play(); // 再生開始
+
+        UE_LOG(LogTemp, Warning, TEXT("🎵 イントロ終了 → ループ再生開始: %s"), *myClearLoopSound->GetName());
     }
 }
