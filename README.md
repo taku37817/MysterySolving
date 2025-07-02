@@ -397,10 +397,10 @@ DSP Action（有料）
 
 #### 1.リポジトリ上部の「<>Code」タブをクリック。
 #### 2.右側の「About」の下にある「Releases」セクションをご確認ください。
-#### 3.そこにある「Bugsremain(v0.10.0)」を開くと、素材の「パスワード付き ZIPフォルダー」があります。
-ダウンロード、解凍、そしてその後の手順については、「Bugsremain(v0.10.0)」内に詳しく記載しているので、そちらをご確認のほどよろしくお願いいたします。
+#### 3.そこにある「Full Complete Version(v1.0.0)」を開くと、素材の「パスワード付き ZIPフォルダー」があります。
+ダウンロード、解凍、そしてその後の手順については、「Full Complete Version(v1.0.0)」内に詳しく記載しています。ご確認のほどよろしくお願いいたします。
 
-<img src="https://github.com/user-attachments/assets/e84da75c-5381-4729-a479-33661a98eb6b" width="800">
+<img src="https://github.com/user-attachments/assets/99e0da54-8c2d-4674-8685-49d7f6601d34" width="800">
 
 ### ※自作したSE音源はリポジトリ内のディレクトリにプッシュしています。
 ---
