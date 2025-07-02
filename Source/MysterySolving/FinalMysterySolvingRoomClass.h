@@ -50,8 +50,10 @@ private:
 	void DoYouHaveBronzeStatueOrPlaced(); //銅像を持ってるかまたは置かれているか
 	void GetAcceptableActorFunction(); //オーバーラップ中のアクター取得
 	void CandleDoYouHaveFunction(); //Candleを持ってるか
-	void OverlapJudgmentFunction(); //オーバーラップしてるか
+	// void OverlapJudgmentFunction(); //オーバーラップしてるかK
 	AActor* FindActorByName(UWorld* world, const FString& actorName); // 指定した名前のアクターをワールド内で検索する関数
 	AActor* GetAcceptableActor(); //オーバーラップ中のアクターを取得する関数
- 
+	
+	UPROPERTY(EditAnywhere)
+	AActor* finalDoorActor;
 };

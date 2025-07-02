@@ -3,7 +3,7 @@
 
 #include "CandleAndPointLightOn.h"
 #include "NiagaraComponent.h"
-#include "NiagaraFunctionLibrary.h"           // エフェクトをスポーンしたりしたい時に必要
+#include "NiagaraFunctionLibrary.h" // エフェクトをスポーンしたりしたい時に必要
 #include "Components/PointLightComponent.h"
 
 // Sets default values for this component's properties

@@ -15,7 +15,7 @@ struct FKeyWidgetData
     GENERATED_BODY()  // 必要なUnreal Engineマクロ（Reflectionシステム用）
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FName keyTag;  // タグ名
+    TArray<FName> keyTags = {"SilverKey","GoldKey","BrownKey"};  // タグ名
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     TSubclassOf<UUserWidget> keyWidgetClass;  // 対応するWBPクラス
@@ -96,4 +96,12 @@ private:
     
     // 指定タグがついたドアアクターを登録する処理
     void RegisterDoors();
+
+    UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> MessageWidgetClass;
+	UUserWidget* MessageWidgetInstance = nullptr;
+
+    UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> notOpenDoorMessageWidgetClass;
+	UUserWidget* notOpenDoorMessageWidgetInstance = nullptr;
 };

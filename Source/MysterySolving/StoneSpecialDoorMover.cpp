@@ -67,13 +67,11 @@ void UStoneSpecialDoorMover::SpecialDoorMover()
             if (doorComponent)
             {
                 doorComponent->StartTimer();
-                doorComponent->SetShouldMove(shouldOpenDoor); // true なら開く、false なら閉じる
+                doorComponent->SetShouldMove(!doorComponent->shouldMove); // true なら開く、false なら閉じる
             }
         }
-
-        isStandSwitchJudge = shouldOpenDoor; // 状態更新
-    }
-    
+         isStandSwitchJudge = shouldOpenDoor; // 状態更新
+    }   
 }
 
 AActor* UStoneSpecialDoorMover::GetAcceptableActor()

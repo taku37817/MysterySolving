@@ -2,6 +2,7 @@
 
 
 #include "FinalMysterySolvingRoomClass.h"
+#include "MultipleConditioDoorMover.h"
 #include "Particles/ParticleSystemComponent.h"  // ナビゲーションパーティクルのインクルード
 #include "NiagaraComponent.h"
 #include "NiagaraFunctionLibrary.h"           // エフェクトをスポーンしたりしたい時に必要
@@ -43,7 +44,7 @@ void UFinalMysterySolvingRoomClass::TickComponent(float DeltaTime, ELevelTick Ti
     doorMoverComponent->StorneDoorMoverFunction(DeltaTime);
 	deltaTime = DeltaTime;
     StateOfTheCandle();
-	OverlapJudgmentFunction(); //オーバーラップしてるか
+	// OverlapJudgmentFunction(); //オーバーラップしてるか
 	DoYouHaveBronzeStatueOrPlaced(); //銅像を持ってるかまたは置かれているか
 	CandleDoYouHaveFunction(); //Candleを持ってるか
 }
@@ -139,18 +140,27 @@ void UFinalMysterySolvingRoomClass::StateOfTheCandle()
 //ドアを動かせるか
 void UFinalMysterySolvingRoomClass::DoorMoveJudgeFunction(bool isDoorMover)
 {
-	if (!doorActor) 
+	if (!doorActor)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("❌ Not doorActor !"));
 		return;
 	}
 
-    UDoorMover* doorMoverComponent = doorActor->FindComponentByClass<UDoorMover>();
-    
-    if(!doorMoverComponent){ UE_LOG(LogTemp, Warning, TEXT("❌Not doorMoverCOmponent !")); return;}
-    doorMoverComponent->SetShouldMove(isDoorMover);
-    //doorMoverComponent->StorneDoorMoverFunction(deltaTime);
+	UDoorMover* doorMoverComponent = doorActor->FindComponentByClass<UDoorMover>();
+	if (!doorMoverComponent)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("❌ Not DoorMoverComponent !"));
+		return;
+	}
+
+	// SetShouldMove を呼ぶ前に準備処理とタイマー開始も行う
+	doorMoverComponent->StorneDoorMoverFunction(deltaTime);  // ← これがないと動かない
+	doorMoverComponent->StartTimer();
+	doorMoverComponent->SetShouldMove(isDoorMover); // ← フラグセットだけではダメ、実行処理も必要
+
+	UE_LOG(LogTemp, Warning, TEXT("✅ ドア状態変更実行: %s"), isDoorMover ? TEXT("Open") : TEXT("Close"));
 }
+
 
 //銅像を持ってるかまたは置かれているか
 void UFinalMysterySolvingRoomClass::DoYouHaveBronzeStatueOrPlaced()
@@ -162,64 +172,71 @@ void UFinalMysterySolvingRoomClass::DoYouHaveBronzeStatueOrPlaced()
 		UE_LOG(LogTemp, Warning, TEXT("❌Not grabberComponent!"));
 		return;	
 	}
-
-    if(grabberComponent->isBronzeStatueGrabbed == true)
+    if(!finalDoorActor) return;
+    UMultipleConditioDoorMover* multipleConditioDoorMover = finalDoorActor->FindComponentByClass<UMultipleConditioDoorMover>();
+    if(multipleConditioDoorMover && multipleConditioDoorMover->isAllConditionsMet)
     {
-        //手動で点灯可能にさせる
-        if(bLightingManualOn)
+        if (grabberComponent->isBronzeStatueGrabbed)
         {
-            CandlEeraseFunction(false);
-            DoorMoveJudgeFunction(false); //すべて消えていたら、ドアが閉まる
-            bLightingManualOn = false;
-        }
-    }
-    else
-    {
-        // オーバーラップ中のすべてのアクターを取得
-        TArray<AActor*> overlappingActors;
-        GetOverlappingActors(overlappingActors);
-        // 銅像アクターがオーバーラップしているか確認
-        for (AActor* actor : overlappingActors)
-        {
-            UE_LOG(LogTemp, Warning, TEXT("actor: %s"),*actor->GetName());
-            if(!bronzeStatueActor)
+            if (bLightingManualOn) // 点火前の状態のみ処理する
             {
-                UE_LOG(LogTemp, Warning, TEXT("Not BronzeStatueActor!"));
-                return;
+                CandlEeraseFunction(false); // 火を消す
+                DoorMoveJudgeFunction(false); // ドアを閉める
+                bLightingManualOn = false;
             }
-            if(bronzeStatueActor)
+        }
+
+        else
+        {
+            // 銅像アクターがオーバーラップしているか確認
+            if (bronzeStatueActor && IsOverlappingActor(bronzeStatueActor))
             {
-                if (IsOverlappingActor(actor))
+                if(!bLightingManualOn)
                 {
-                    DoorMoveJudgeFunction(true); //すべてついていたら、ドアが開く
-                    CandlEeraseFunction(true);
-                    bLightingManualOn = true; //手動で点灯できないようにする
-                    UE_LOG(LogTemp, Display, TEXT("Overlapping with Bronze Statue!"));
+                    // 像がこのスタンドに乗っているなら開ける
+                    DoorMoveJudgeFunction(true); // ドアを開く
+                    CandlEeraseFunction(true);   // キャンドル再点灯
+                    bLightingManualOn = true;    // 手動点火を無効化
+                    UE_LOG(LogTemp, Display, TEXT("✅ BronzeStatue is placed correctly and overlapping."));
                 }
             }
+            else
+            {
+                if (bLightingManualOn) // 点火前の状態のみ処理する
+                {
+                    CandlEeraseFunction(false); // 火を消す
+                    DoorMoveJudgeFunction(false); // ドア閉じる
+                    UE_LOG(LogTemp, Display, TEXT("❌ BronzeStatue is not overlapping."));
+                    bLightingManualOn = false; 
+                }
+            }
+            //CandlEeraseFunction(true);
+            UE_LOG(LogTemp, Warning, TEXT("❌Not 銅像 Grabbed!"));
         }
-        //CandlEeraseFunction(true);
-        UE_LOG(LogTemp, Warning, TEXT("❌Not 銅像 Grabbed!"));
-    }
-    if(isCandleGrabbed) //すべて消えていたら isCandleGrabbed = true
-    {
-        DoorMoveJudgeFunction(false); //すべてついていたら、ドアが閉じる
-        if(bIsCandleGrabbedMessageOnlyOnce)
+        if(isCandleGrabbed) //すべて消えていたら isCandleGrabbed = true
         {
-            if(grabberComponent)
-                grabberComponent->bIsCandleGrabbedMessage = true; //キャンドル持てるメッセージ表示
-            bIsCandleGrabbedMessageOnlyOnce = false; //持てるかキャンドルメッセージのbool判定を適用を一回のみにするための判定
+            DoorMoveJudgeFunction(false); //すべてついていたら、ドアが閉じる
+            if(bIsCandleGrabbedMessageOnlyOnce)
+            {
+                if(grabberComponent)
+                    grabberComponent->bIsCandleGrabbedMessage = true; //キャンドル持てるメッセージ表示
+                bIsCandleGrabbedMessageOnlyOnce = false; //持てるかキャンドルメッセージのbool判定を適用を一回のみにするための判定
+            }
+        }
+        else //すべてついていたら isCandleGrabbed = false
+        {
+            DoorMoveJudgeFunction(true); //すべてついていたら、ドアが開く
+            if(!bIsCandleGrabbedMessageOnlyOnce)
+            {
+                if(grabberComponent)
+                    grabberComponent->bIsCandleGrabbedMessage = false; //キャンドル持てるメッセージ非表示
+                bIsCandleGrabbedMessageOnlyOnce = true; //持てるかキャンドルメッセージのbool判定を適用を一回のみにするための判定
+            }
         }
     }
-    else //すべてついていたら isCandleGrabbed = false
+    else if(multipleConditioDoorMover && !multipleConditioDoorMover->isAllConditionsMet)
     {
-        DoorMoveJudgeFunction(true); //すべてついていたら、ドアが開く
-        if(!bIsCandleGrabbedMessageOnlyOnce)
-        {
-            if(grabberComponent)
-                grabberComponent->bIsCandleGrabbedMessage = false; //キャンドル持てるメッセージ非表示
-            bIsCandleGrabbedMessageOnlyOnce = true; //持てるかキャンドルメッセージのbool判定を適用を一回のみにするための判定
-        }
+         DoorMoveJudgeFunction(false); // ドアが閉まる
     }
 }
 
@@ -265,17 +282,17 @@ void UFinalMysterySolvingRoomClass::CandleDoYouHaveFunction()
     UStaticMeshComponent* meshComponent = grabbedCandleActor->FindComponentByClass<UStaticMeshComponent>();
     meshComponent->SetCollisionResponseToChannel(grabberChannel,isCandleGrabbed ? ECR_Block : ECR_Ignore);
 }
-//オーバーラップしてるか
-void UFinalMysterySolvingRoomClass::OverlapJudgmentFunction()
-{
-	AActor* playerActor = FindActorByName(GetWorld(), TEXT("BP_Player")); //WorldにBP_Playerが存在したらplayerActorに代入
-	if(!playerActor) UE_LOG(LogTemp, Warning, TEXT("❌　Not playerActor!")) return;
+// //オーバーラップしてるか
+// void UFinalMysterySolvingRoomClass::OverlapJudgmentFunction()
+// {
+// 	AActor* playerActor = FindActorByName(GetWorld(), TEXT("BP_Player")); //WorldにBP_Playerが存在したらplayerActorに代入
+// 	if(!playerActor) UE_LOG(LogTemp, Warning, TEXT("❌　Not playerActor!")) return;
 
-    UGrabber* grabberComponent = playerActor->FindComponentByClass<UGrabber>();
+//     UGrabber* grabberComponent = playerActor->FindComponentByClass<UGrabber>();
 
-    if(IsOverlappingActor(grabbedCandleActor))
-    {
-        if(!grabberComponent) UE_LOG(LogTemp, Warning, TEXT("❌Not grabberComponent!")) return;
-        grabberComponent->SetGargoyleAndStandMessageDisplayJudge(false,true);
-    }
-}
+//     if(IsOverlappingActor(grabbedCandleActor))
+//     {
+//         if(!grabberComponent) UE_LOG(LogTemp, Warning, TEXT("❌Not grabberComponent!")) return;
+//         grabberComponent->SetGargoyleAndStandMessageDisplayJudge(false,true);
+//     }
+// }

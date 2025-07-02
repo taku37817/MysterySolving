@@ -1,117 +1,80 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "MultipleConditioDoorMover.h"
-#include "Engine/World.h"
+#include "TriggerComponent.h"
+#include "DoorMover.h"
 
-// Sets default values for this component's properties
+// コンストラクタ：Tickを有効にすることで毎フレーム処理が可能に
 UMultipleConditioDoorMover::UMultipleConditioDoorMover()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
-
-    // 比較用タグを設定
-    hikakuTag.Add(FName("Gargoyle_Red"));
-    hikakuTag.Add(FName("Gargoyle_Blue"));
-    hikakuTag.Add(FName("Gargoyle_Green"));
-
-	// ...
+    PrimaryComponentTick.bCanEverTick = true;
 }
 
-
-// Called when the game starts
+// BeginPlay：ゲーム開始時またはスポーン時に呼び出される初期化処理（今回は未使用）
 void UMultipleConditioDoorMover::BeginPlay()
 {
-	Super::BeginPlay();
-	
+    Super::BeginPlay();
 }
 
-
-// Called every frame
+// TickComponent：毎フレーム呼び出され、条件チェックを実行する
 void UMultipleConditioDoorMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+    Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
     deltaTime = DeltaTime;
-    CheckConditions();
+
+    CheckConditions(); // スタンドとタグの条件を確認し、ドア制御を行う
 }
-// 条件をチェックするメソッド
+
+// CheckConditions：ドアに対応するスタンドの状態を調べ、必要なタグが揃っているかをチェック
 void UMultipleConditioDoorMover::CheckConditions()
 {
-    // すべての TriggerComponent のアクターから取得したタグを格納する配列
-    TArray<FName> totalTags;
+    TArray<FName> currentTags;  // このドア専用のスタンドから取得したタグを格納
 
-    // 各 TriggerComponent アクターに対して処理を行う
-    for (AActor* triggerComponentActor : triggerComponentActors)
+    // 登録されたTriggerActor（スタンド）を走査
+    for (AActor* actor : myTriggerActors)
     {
-        // アクターから TriggerComponent を探す（存在する前提）
-        UTriggerComponent* triggerComp = triggerComponentActor->FindComponentByClass<UTriggerComponent>();
-        if (!triggerComp)
+        UTriggerComponent* trigger = actor->FindComponentByClass<UTriggerComponent>();
+        if (!trigger) continue; // TriggerComponentが存在しない場合はスキップ
+
+        // スタンドに乗っているアクターのタグを取得
+        TArray<FName> tags = trigger->GetOverlappingActorTags();
+
+        // 重複を避けつつタグを追加
+        for (const FName& tag : tags)
         {
-            // もし TriggerComponent が見つからなければエラーログを出して終了
-            UE_LOG(LogTemp, Error, TEXT("TriggerComponent is null!"));
-            return;
-        }
-
-        // TriggerComponent が見つかったらログ出力
-        UE_LOG(LogTemp, Warning, TEXT("TriggerComponent is valid: %s"), *triggerComp->GetName());
-
-        // この TriggerComponent にオーバーラップしているアクターのタグを取得
-        TArray<FName> actorTags = triggerComp->GetOverlappingActorTags();
-
-        // 取得したタグを totalTags に追加（AddUnique で重複回避）
-        for (const FName& tag : actorTags)
-        {
-            totalTags.AddUnique(tag);
+            currentTags.AddUnique(tag);
         }
     }
 
-    // 現在オーバーラップしている全タグをログに表示（デバッグ用）
-    for (const FName& tag : totalTags)
+    // 指定されたすべてのタグが currentTags に含まれているかを確認
+    bool allTagsMatched = true;
+    for (const FName& tag : requiredTags)
     {
-        UE_LOG(LogTemp, Warning, TEXT("重なっているタグ: %s"), *tag.ToString());
-    }
-
-    // すべての比較対象タグ（hikakuTag）が totalTags に含まれているかチェック
-    bool allConditionsMet = true;
-    for (const FName& requiredTag : hikakuTag)
-    {
-        if (!totalTags.Contains(requiredTag))
+        if (!currentTags.Contains(tag))
         {
-            // 1つでも足りなければ false にして break（処理を中断）
-            allConditionsMet = false;
-            break;
+            allTagsMatched = false;
+            break; // 一つでも一致しなければ失敗とみなす
         }
     }
 
-    // ドアを操作するためのコンポーネントを取得
-    UDoorMover* doorMoverComponent = GetOwner()->FindComponentByClass<UDoorMover>();
-    if (!doorMoverComponent)
+    // ドアのコンポーネントを取得
+    UDoorMover* doorMover = GetOwner()->FindComponentByClass<UDoorMover>();
+    if (!doorMover) return; // ドアが見つからなければ処理中断
+    doorMover->StorneDoorMoverFunction(deltaTime); // 移動処理の初期化
+
+    // 状態が変化した場合のみ、ドアの開閉を実行
+    if (allTagsMatched && !wasDoorOpen)
     {
-        // ドアコンポーネントがなければ警告ログ出して終了
-        UE_LOG(LogTemp, Warning, TEXT("Not DoorMoverComponent！"));
-        return;
+        isAllConditionsMet = true;
+        doorMover->StartTimer(); // タイマー開始
+        doorMover->SetShouldMove(true); // ドアを開ける
+        UE_LOG(LogTemp, Warning, TEXT("✅ 条件が揃ったのでドアを開けました"));
+        wasDoorOpen = true;
     }
-
-    // すべての条件を満たしていた場合（ドアを開ける）
-    if (allConditionsMet)
+    else if (!allTagsMatched && wasDoorOpen)
     {
-        // 移動処理の前準備とタイマー開始
-        doorMoverComponent->StorneDoorMoverFunction(deltaTime);
-        doorMoverComponent->StartTimer();
-        doorMoverComponent->SetShouldMove(true);  // ドアを開ける
-
-        // ログ表示
-        UE_LOG(LogTemp, Warning, TEXT("条件を満たしたのでゲートを開けました！"));
-    }
-    else
-    {
-        // 条件未達時：同様に動かすがフラグは閉じる
-        doorMoverComponent->StorneDoorMoverFunction(deltaTime);
-        doorMoverComponent->StartTimer();
-        doorMoverComponent->SetShouldMove(false);  // ドアを閉める
-
-        // ログ表示
-        UE_LOG(LogTemp, Warning, TEXT("条件が満たされていません"));
+        isAllConditionsMet = false;
+        doorMover->StartTimer(); // タイマー開始
+        doorMover->SetShouldMove(false); // ドアを閉じる
+        UE_LOG(LogTemp, Warning, TEXT("❌ 条件が崩れたのでドアを閉じました"));
+        wasDoorOpen = false;
     }
 }

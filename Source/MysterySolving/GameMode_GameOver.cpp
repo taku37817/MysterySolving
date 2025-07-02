@@ -1,23 +1,39 @@
 #include "GameMode_GameOver.h" // 自作のゲームオーバー用GameModeのヘッダーをインクルード
 
-#include "Kismet/GameplayStatics.h"             // プレイヤー取得やサウンド再生などの静的ユーティリティ
-#include "GameFramework/PlayerController.h"     // プレイヤーコントローラー関連クラス
-#include "GameFramework/Character.h"            // キャラクタークラス
-#include "GameFramework/CharacterMovementComponent.h" // キャラクターの移動処理
-#include "Components/TextBlock.h"               // ウィジェット内のテキストブロックを使うためのインクルード
-#include "Internationalization/Text.h"          // テキストのローカライズ処理用（FText関連）
+#include "Kismet/GameplayStatics.h"                   // プレイヤー取得やサウンド再生用
+#include "GameFramework/PlayerController.h"           // プレイヤー操作制御
+#include "GameFramework/Character.h"                  // キャラクター関連
+#include "GameFramework/CharacterMovementComponent.h" // キャラ移動制御
+#include "Components/TextBlock.h"                     // テキスト表示用
+#include "Blueprint/UserWidget.h"                     // UI表示用
 
 AGameMode_GameOver::AGameMode_GameOver()
 {
     PrimaryActorTick.bCanEverTick = false; // 毎フレームのTick処理は不要なので無効化
+
+    // ルートコンポーネント作成（Audioの親になる）
+    RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
+
+    // 音声再生用のAudioComponent作成
+    myTimeLimitAudioComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("myTimeLimitAudioComponent"));
+    myTimeLimitAudioComponent->SetupAttachment(RootComponent); // Rootにアタッチ
+    myTimeLimitAudioComponent->bAutoActivate = false; // 自動再生OFF（手動でPlayする）
+
 }
 
 void AGameMode_GameOver::BeginPlay()
 {
     Super::BeginPlay(); // 親クラスのBeginPlayを呼び出す
+
     bIsClear = false;
     // 毎秒呼ばれるタイマーを設定（UpdateTimer関数を1秒ごとに実行）
     GetWorldTimerManager().SetTimer(countdownTimer, this, &AGameMode_GameOver::UpdateTimer, 1.0f, true);
+
+    // エディタで設定した音源をAudioComponentに設定
+    if (myTimeLimitSound)
+    {
+        myTimeLimitAudioComponent->SetSound(myTimeLimitSound);
+    }
 }
 
 void AGameMode_GameOver::UpdateTimer()
@@ -76,6 +92,82 @@ void AGameMode_GameOver::UpdateTimer()
             {
                 countdownText->SetText(FText::FromString(formattedTime)); // 分:秒でセット
             }
+            if(remainingTime <= 121.5f)
+            {
+                if (myTimeLimitAudioComponent && myTimeLimitAudioComponent->Sound && !myTimeLimitAudioComponent->IsPlaying())
+                {
+                    myTimeLimitAudioComponent->Play();
+                }
+            }
+            if(remainingTime <= 120.0f)
+            {
+                if (countdownText)
+                {
+                    countdownText->SetVisibility(ESlateVisibility::Collapsed); // 通常表示は非表示に
+                }
+                if (timeLimitCountdownText)
+                {
+                    timeLimitCountdownText->SetText(FText::FromString(TEXT("残り2分"))); // 強調表示に更新
+                    timeLimitCountdownText->SetVisibility(ESlateVisibility::Visible); // 表示する
+                }
+            }
+            if(remainingTime <= 118.0f)
+            {
+                if (countdownText)
+                {
+                    countdownText->SetVisibility(ESlateVisibility::Visible); // 通常表示は非表示に
+                }
+                if (timeLimitCountdownText)
+                {
+                    timeLimitCountdownText->SetVisibility(ESlateVisibility::Hidden); // 表示する
+                }
+            }
+            if(remainingTime <= 60.0f)
+            {
+                if (countdownText)
+                {
+                    countdownText->SetVisibility(ESlateVisibility::Collapsed); // 通常表示は非表示に
+                }
+                if (timeLimitCountdownText)
+                {
+                    timeLimitCountdownText->SetText(FText::FromString(TEXT("残り1分"))); // 強調表示に更新
+                    timeLimitCountdownText->SetVisibility(ESlateVisibility::Visible); // 表示する
+                }
+            }
+            if(remainingTime <= 58.0f)
+            {
+                if (countdownText)
+                {
+                    countdownText->SetVisibility(ESlateVisibility::Visible); // 通常表示は非表示に
+                }
+                if (timeLimitCountdownText)
+                {
+                    timeLimitCountdownText->SetVisibility(ESlateVisibility::Hidden); // 表示する
+                }
+            }
+            if(remainingTime <= 30.0f)
+            {
+                if (countdownText)
+                {
+                    countdownText->SetVisibility(ESlateVisibility::Collapsed); // 通常表示は非表示に
+                }
+                if (timeLimitCountdownText)
+                {
+                    timeLimitCountdownText->SetText(FText::FromString(TEXT("残り30秒"))); // 強調表示に更新
+                    timeLimitCountdownText->SetVisibility(ESlateVisibility::Visible); // 表示する
+                }
+            }
+            if(remainingTime <= 28.0f)
+            {
+                if (countdownText)
+                {
+                    countdownText->SetVisibility(ESlateVisibility::Visible); // 通常表示は非表示に
+                }
+                if (timeLimitCountdownText)
+                {
+                    timeLimitCountdownText->SetVisibility(ESlateVisibility::Hidden); // 表示する
+                }
+            }
 
             if (remainingTime <= 10.0f) // 残り10秒以下なら
             {
@@ -95,10 +187,16 @@ void AGameMode_GameOver::UpdateTimer()
         if (remainingTime <= 0.0f) // 残り時間が0以下なら
         {
             HandleGameOver(); // ゲームオーバー処理を実行
+            myTimeLimitAudioComponent->Stop(); // 停止
         }
     }
     else // クリア済みの場合（タイマー止まった後に表示用）
     {
+        //クリアしたらゲームオーバーBGM停止
+        if (myTimeLimitAudioComponent && myTimeLimitAudioComponent->Sound && myTimeLimitAudioComponent->IsPlaying())
+        {
+            myTimeLimitAudioComponent->Stop();
+        }
         if (clearTimeWidgetClass && !clearTimeWidget) // ウィジェット未生成なら
         {
             clearTimeWidget = CreateWidget<UUserWidget>(playerController, clearTimeWidgetClass); // クリアタイム用ウィジェット作成
@@ -114,7 +212,7 @@ void AGameMode_GameOver::UpdateTimer()
             int32 minutes = totalSeconds / 60; // 分に変換
             int32 seconds = totalSeconds % 60; // 秒に変換
 
-            FString formattedClearTime = FString::Printf(TEXT("クリア時: %d:%02d"), minutes, seconds); // 分:秒形式に整形
+            FString formattedClearTime = FString::Printf(TEXT("残り: %d:%02d でクリア"), minutes, seconds); // 分:秒形式に整形
 
             UTextBlock* countdownViewText = Cast<UTextBlock>(clearTimeWidget->GetWidgetFromName(TEXT("ClearTimer"))); // テキスト取得
             if (countdownViewText)

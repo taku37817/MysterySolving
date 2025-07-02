@@ -5,7 +5,9 @@
 #include "CoreMinimal.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h" 
-#include "Blueprint/UserWidget.h"// ゲーム内で使う UI（UUserWidget など）を扱うため
+#include "Blueprint/UserWidget.h"				// ゲーム内で使う UI（UUserWidget など）を扱うため
+#include "Components/AudioComponent.h"          //オーディオ関連を利用に必要
+#include "Sound/SoundBase.h"      				// USoundBaseを使うため (SoundCueやSoundWaveの親クラス)
 #include "ClearTriggerComponent.generated.h"
 
 /**
@@ -20,6 +22,13 @@ public:
 
 protected:
     virtual void BeginPlay() override; // ゲーム開始時に呼ばれる
+	
+    // 🔽 イントロからループへの切り替え関数
+    UFUNCTION()
+    void SwitchFromIntroToLoop();
+
+	// 🔽 タイマーのためのハンドル（メンバ変数として保持）
+    FTimerHandle loopStartTimerHandle;
 
 public:
     virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override; // 毎フレーム処理
@@ -39,4 +48,22 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	AActor* bronzeStatueActor; // 対象の銅像アクター
+
+	/** BGM再生用のAudioComponent */
+	/*BGM再生用のコンポーネント*/
+	/*クリア*/
+
+	/*クリアBGMのイントロ*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Audio", meta = (AllowPrivateAccess = "true"))
+    UAudioComponent* myClearIntroAudioComponent;
+	 /** エディタで設定するBGM */
+    UPROPERTY(EditAnywhere, Category = "Audio")
+    USoundBase* myClearIntroSound;
+	
+	/*クリアBGMのループ*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Audio", meta = (AllowPrivateAccess = "true"))
+    UAudioComponent* myClearLoopAudioComponent;
+		 /** エディタで設定するBGM */
+    UPROPERTY(EditAnywhere, Category = "Audio")
+    USoundBase* myClearLoopSound;
 };
