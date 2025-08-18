@@ -4,7 +4,7 @@
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#0--%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%AB">0.🎮タイトル・ジャンル</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#1--%E6%A6%82%E8%A6%81">1.📖概要</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#2-%EF%B8%8F-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">2.🖥️開発環境</a></h2>
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#3-%EF%B8%8F-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93%E4%B8%80%E8%A6%A7">3.🛠️使用技術一覧</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#3-%EF%B8%8F-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93%E4%B8%80%E8%A6%A7">3.🛠️使用技術・モジュール・ライブラリ一覧</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#4--%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90">4.📂ディレクトリ構成</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#5--%E5%88%A9%E7%94%A8%E7%B4%A0%E6%9D%90%E3%81%AE%E8%91%97%E4%BD%9C%E6%A8%A9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">5.📜利用素材の著作権について</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%EF%B8%8F-%E8%87%AA%E4%BD%9C%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E8%91%97%E4%BD%9C%E7%89%A9%E3%81%AE%E6%A0%BC%E7%B4%8D%E5%A0%B4%E6%89%80">6.🛡️自作ではない著作物の格納場所</a></h2>
@@ -104,11 +104,11 @@ DSP Action（有料）
 
 ---
 
-# 3. 【🛠️ 使用技術一覧】
+# 3. 【🛠️使用技術・モジュール・ライブラリ一覧】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 <details>
-<summary><b> 📖 詳細はこちら（クリックで展開） </b></summary>
+　<summary><b> 📖 使用技術はについて（クリックで展開） </b></summary>
 
  <br>
            
@@ -123,6 +123,72 @@ DSP Action（有料）
 
 </details>
 
+<details>
+ <summary><b>🛠️モジュールについて（クリックで展開）</b></summary>
+<br>
+
+| モジュール名            | 説明                                             | 実際に使った例（用途）                                        |
+|------------------------|-------------------------------------------------|--------------------------------------------------------------|
+| Core                   | UEの基本型やマクロなどを含む最小構成ライブラリ       | 全てのC++クラスで基礎的に使用                                  |
+| CoreUObject            | UObjectやGC、リフレクションなどを提供             | アクターの継承やオブジェクト生成で使用                        |
+| Engine                 | アクター・ワールド・コンポーネント等の主要機能       | アクター生成・移動・Tick処理などで使用                          |
+| InputCore              | 入力制御全般（バインド、マッピング）             | キー入力処理（マウス左クリック or Eキーで持つ・離す）          |
+| HeadMountedDisplay     | VR/AR向けHMDデバイス制御用                        | 将来的な拡張を見越して追加                                      |
+| UMG                    | ユーザーインターフェース構築用                     | 音量スライダーやヒントUIの作成                                  |
+| PhysicsCore            | 物理演算（剛体、衝突）のベース機能                 | 像の落下判定・衝突判定処理                                     |
+| Niagara                | 高性能VFX（Niagara）を扱うための機能群            | 銅像配置時の光の演出に使用                                      |
+| Slate                  | 低レベルUI構築フレームワーク（UMGの基礎）        | UIカスタム処理用に内部で必要                                    |
+| SlateCore              | Slateフレームワークの基礎モジュール               | 同上（内部依存として使用）                                       |
+
+- <h3>実際に使用モジュールを登録したときのコード（Build.cs）です。</h3>
+
+<img src="https://github.com/user-attachments/assets/dbae09c0-e2f1-4b36-bed9-88b451550e31" alt="モジュール" width="700"/>
+
+ - [こちらはBuild.csの詳細になります。]("Source/MysterySolving/MysterySolving.Build.cs")
+
+</details>
+
+<details>
+ <summary><b>🛠️ライブラリ ①開発基盤・ゲームフレームワーク編（クリックで展開） </b></summary>
+
+| カテゴリ                | インクルード                                     | 用途・説明                                                                 |
+|------------------------|-----------------------------------------------|---------------------------------------------------------------------------|
+| 基本・共通機能           | CoreMinimal.h                                 | UEの基本型やマクロ、ログ機能など、共通ベースとなるヘッダー                     |
+| 基本・共通機能           | Modules/ModuleManager.h                        | モジュール初期化・管理用ヘッダー                                             |
+| 基本・共通機能           | TimerManager.h                                | 一定時間後の処理など、タイマー機能を制御                                      |
+| 基本・共通機能           | DrawDebugHelpers.h                             | デバッグ描画（ライン、ボックスなど）の表示                                    |
+| 数学関連                | Math/UnrealMathUtility.h                       | 数学関数やランダム値生成（Clamp, Lerpなど）                                   |
+| テキスト・ローカライズ関連 | Internationalization/Text.h                    | ローカライズ対応用のFText型などを定義                                        |
+| ゲームフレームワーク関連   | GameFramework/Actor.h                          | ゲーム内すべてのアクターの基底クラス                                          |
+| ゲームフレームワーク関連   | GameFramework/Character.h                      | キャラクター制御用アクタークラス                                              |
+| ゲームフレームワーク関連   | GameFramework/CharacterMovementComponent.h    | キャラクターの移動やジャンプ処理を担当                                        |
+| ゲームフレームワーク関連   | GameFramework/GameModeBase.h                   | ゲームルールの制御用クラス                                                   |
+| ゲームフレームワーク関連   | GameFramework/InputSettings.h                  | アクションや軸入力の設定を取得・定義                                         |
+| ゲームフレームワーク関連   | GameFramework/PlayerController.h              | 入力・UI・視点などを制御する主要クラス                                       |
+| ゲームフレームワーク関連   | GameFramework/ProjectileMovementComponent.h   | 弾やオブジェクトの移動制御用コンポーネント                                    |
+| ゲームフレームワーク関連   | Camera/CameraComponent.h                       | プレイヤー視点用カメラを定義                                                |
+| ゲームフレームワーク関連   | Camera/PlayerCameraManager.h                   | カメラズーム・揺れなどの管理クラス                                           |
+
+[このリンクは上記のライブラリを使用した実際のコードです。](Source/MysterySolving/GameMode_Pause.cpp)（Source/MysterySolving/GameMode_Pause.cpp）
+
+<details>
+  <summary><b>ライブラリ使用例の画像（一部から抜粋）</b></summary>
+  <br>
+
+  - TimerManager.h ライブラリを実際に使用した例です。
+  - 画像説明：「UDoorMover::StartTimer()」 内で公式の FTimerManager::SetTimer() を使用し、5秒後に ResetTimer() を実行して音声再生を制御しています。
+  <img width="1000" height="1000" alt="TimerManager h使用例コード" src="https://github.com/user-attachments/assets/491651fc-688e-4a7a-8352-4bf543995863" />
+  
+  - 以下の画像のコードは 「ShowPauseMenu()」 関数内に記述されており、ポーズ中にUIを表示し、入力モードやマウスカーソルの切り替えを行っています。
+  <img width="994" height="188" alt="GameFramework関連の使用例コード。1" src="https://github.com/user-attachments/assets/71d10a38-8eb2-437e-84d9-9ba3c0a9edfd" />
+
+  - ※ 以下の画像のコードは ShowPauseMenu() 関数内に記述されており、ポーズ中にUIを表示し、入力モードやマウスカーソルの切り替えを行っています。
+  <img width="737" height="137" alt="GameFramework関連の使用例コード。2" src="https://github.com/user-attachments/assets/3cbb54f8-5ef0-4965-950f-6c7b7a037098" />
+
+  - 以下の画像HidePauseMenu() では、ポーズ用UIを非表示にし、入力モードをゲーム専用に戻します。
+  <img width="901" height="414" alt="GameFramework関連の使用例コード。3" src="https://github.com/user-attachments/assets/831082e8-9e55-465b-b416-419c87ddd972" />
+</details>
+</details>
 ---
 
 # 4. 【📂 ディレクトリ構成】
