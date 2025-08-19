@@ -16,7 +16,7 @@
 
 # 0. 【🎮 タイトル・ジャンル】
 - ## タイトル：Mystery Solving Dungeon 
-- ## ジャンル：謎解きゲーム  
+- ## ジャンル：3D 謎解きゲーム  
 
 # 1. 【📖 概要】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
