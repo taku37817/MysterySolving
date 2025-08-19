@@ -4,7 +4,7 @@
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#0--%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%AB">0.🎮タイトル・ジャンル</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#1--%E6%A6%82%E8%A6%81">1.📖概要</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#2-%EF%B8%8F-%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">2.🖥️開発環境</a></h2>
-<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#3-%EF%B8%8F-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93%E4%B8%80%E8%A6%A7">3.🛠️使用技術・モジュール・ライブラリ一覧</a></h2>
+<h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#3-%EF%B8%8F-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93%E4%B8%80%E8%A6%A7">3.🛠️使用技術・モジュール・ライブラリ一覧（コード紹介あり）</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#4--%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90">4.📂ディレクトリ構成</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#5--%E5%88%A9%E7%94%A8%E7%B4%A0%E6%9D%90%E3%81%AE%E8%91%97%E4%BD%9C%E6%A8%A9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">5.📜利用素材の著作権について</a></h2>
 <h2><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#6-%EF%B8%8F-%E8%87%AA%E4%BD%9C%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E8%91%97%E4%BD%9C%E7%89%A9%E3%81%AE%E6%A0%BC%E7%B4%8D%E5%A0%B4%E6%89%80">6.🛡️自作ではない著作物の格納場所</a></h2>
@@ -28,9 +28,9 @@
 
 ・🔥 火を灯す／消すことで進行ルートが変化
 
-・🎨 特定の色のオブジェクトを正しい場所に配置してドアを開ける
-
 ・⏱️ 制限時間内に複数のステップを踏んでゴールを目指す
+
+・🎨 特定の色のオブジェクトを正しい場所に配置してドアを開ける
 
 プレイヤーは 探索 🧭 と 論理思考 🧠 を駆使して、各ステージの攻略を目指します。
 
@@ -104,7 +104,7 @@ DSP Action（有料）
 
 ---
 
-# 3. 【🛠️使用技術・モジュール・ライブラリ一覧】
+# 3. 【🛠️ 使用技術・モジュール・ライブラリ一覧（コード紹介あり）】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 <details>
@@ -149,46 +149,191 @@ DSP Action（有料）
 </details>
 
 <details>
- <summary><b>🛠️ライブラリ ①開発基盤・ゲームフレームワーク編（クリックで展開） </b></summary>
+  <summary><b>🛠️ライブラリ ①開発基盤・ゲームフレームワーク編（クリックで展開） </b></summary>
+ 
+ | カテゴリ                | インクルード                                     | 用途・説明                                                                 |
+ |------------------------|-----------------------------------------------|---------------------------------------------------------------------------|
+ | 基本・共通機能           | CoreMinimal.h                                 | UEの基本型やマクロ、ログ機能など、共通ベースとなるヘッダー                     |
+ | 基本・共通機能           | Modules/ModuleManager.h                        | モジュール初期化・管理用ヘッダー                                             |
+ | 基本・共通機能           | TimerManager.h                                | 一定時間後の処理など、タイマー機能を制御                                      |
+ | 基本・共通機能           | DrawDebugHelpers.h                             | デバッグ描画（ライン、ボックスなど）の表示                                    |
+ | 数学関連                | Math/UnrealMathUtility.h                       | 数学関数やランダム値生成（Clamp, Lerpなど）                                   |
+ | テキスト・ローカライズ関連 | Internationalization/Text.h                    | ローカライズ対応用のFText型などを定義                                        |
+ | ゲームフレームワーク関連   | GameFramework/Actor.h                          | ゲーム内すべてのアクターの基底クラス                                          |
+ | ゲームフレームワーク関連   | GameFramework/Character.h                      | キャラクター制御用アクタークラス                                              |
+ | ゲームフレームワーク関連   | GameFramework/CharacterMovementComponent.h    | キャラクターの移動やジャンプ処理を担当                                        |
+ | ゲームフレームワーク関連   | GameFramework/GameModeBase.h                   | ゲームルールの制御用クラス                                                   |
+ | ゲームフレームワーク関連   | GameFramework/InputSettings.h                  | アクションや軸入力の設定を取得・定義                                         |
+ | ゲームフレームワーク関連   | GameFramework/PlayerController.h              | 入力・UI・視点などを制御する主要クラス                                       |
+ | ゲームフレームワーク関連   | GameFramework/ProjectileMovementComponent.h   | 弾やオブジェクトの移動制御用コンポーネント                                    |
+ | ゲームフレームワーク関連   | Camera/CameraComponent.h                       | プレイヤー視点用カメラを定義                                                |
+ | ゲームフレームワーク関連   | Camera/PlayerCameraManager.h                   | カメラズーム・揺れなどの管理クラス                                           |
+ 
+ <h4>・以下のリンクでは、上記ライブラリの使用したコード例を一部ご紹介しています。</h4>
+ 
+ ---
+ 
+ [このリンクは「GameFramework」関連の実際のコードです。](Source/MysterySolving/GameMode_Pause.cpp)（Source/MysterySolving/GameMode_Pause.cpp）
+ 
+ <details>
+   <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
+   <br>
+ 
+   - **ShowPauseMenu() 内の処理例**  
+     UI 表示、入力モード切替、マウスカーソル表示を管理。
+     <img width="994" height="188" alt="GameFramework使用例1" src="https://github.com/user-attachments/assets/71d10a38-8eb2-437e-84d9-9ba3c0a9edfd" />
+     <img width="737" height="137" alt="GameFramework使用例2" src="https://github.com/user-attachments/assets/3cbb54f8-5ef0-4965-950f-6c7b7a037098" />
+ 
+   - **HidePauseMenu() 内の処理例**  
+     ポーズ用UI非表示、入力モードを `GameOnly` に戻す。
+     <img width="901" height="414" alt="GameFramework使用例3" src="https://github.com/user-attachments/assets/831082e8-9e55-465b-b416-419c87ddd972" />
+ </details>
+ 
+ ---
+ 
+ [このリンクは「TimerManager.h」の実際のコードです。](Source/MysterySolving/DoorMover.cpp)（Source/MysterySolving/DoorMover.cpp）
+ 
+ <details>
+   <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
+   <br>
+ 
+   - **UDoorMover::StartTimer() の例**  
+     `FTimerManager::SetTimer()` を使用し、5秒後に `ResetTimer()` を実行して音声制御。
+     <img width="1000" height="1000" alt="TimerManager使用例" src="https://github.com/user-attachments/assets/491651fc-688e-4a7a-8352-4bf543995863" />
+ </details>
+ 
+ ---
+ 
+ [このリンクは「DrawDebugHelpers.h」の実際のコードです。](Source/MysterySolving/Grabber.cpp)（Source/MysterySolving/Grabber.cpp）
+ 
+ <details>
+   <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
+   <br>
+ 
+   - **GetGrabberbleInReach() 内の例**  
+     `DrawDebugLine()` と `DrawDebugSphere()` でプレイヤー前方の掴める範囲を可視化。
+     <img width="996" height="441" alt="DrawDebugHelpers使用例" src="https://github.com/user-attachments/assets/47eecc45-42e5-4bf8-b127-0bc1fa79b3a7" />
+ </details>
+ 
+ ---
+ 
+ </details>
 
-| カテゴリ                | インクルード                                     | 用途・説明                                                                 |
-|------------------------|-----------------------------------------------|---------------------------------------------------------------------------|
-| 基本・共通機能           | CoreMinimal.h                                 | UEの基本型やマクロ、ログ機能など、共通ベースとなるヘッダー                     |
-| 基本・共通機能           | Modules/ModuleManager.h                        | モジュール初期化・管理用ヘッダー                                             |
-| 基本・共通機能           | TimerManager.h                                | 一定時間後の処理など、タイマー機能を制御                                      |
-| 基本・共通機能           | DrawDebugHelpers.h                             | デバッグ描画（ライン、ボックスなど）の表示                                    |
-| 数学関連                | Math/UnrealMathUtility.h                       | 数学関数やランダム値生成（Clamp, Lerpなど）                                   |
-| テキスト・ローカライズ関連 | Internationalization/Text.h                    | ローカライズ対応用のFText型などを定義                                        |
-| ゲームフレームワーク関連   | GameFramework/Actor.h                          | ゲーム内すべてのアクターの基底クラス                                          |
-| ゲームフレームワーク関連   | GameFramework/Character.h                      | キャラクター制御用アクタークラス                                              |
-| ゲームフレームワーク関連   | GameFramework/CharacterMovementComponent.h    | キャラクターの移動やジャンプ処理を担当                                        |
-| ゲームフレームワーク関連   | GameFramework/GameModeBase.h                   | ゲームルールの制御用クラス                                                   |
-| ゲームフレームワーク関連   | GameFramework/InputSettings.h                  | アクションや軸入力の設定を取得・定義                                         |
-| ゲームフレームワーク関連   | GameFramework/PlayerController.h              | 入力・UI・視点などを制御する主要クラス                                       |
-| ゲームフレームワーク関連   | GameFramework/ProjectileMovementComponent.h   | 弾やオブジェクトの移動制御用コンポーネント                                    |
-| ゲームフレームワーク関連   | Camera/CameraComponent.h                       | プレイヤー視点用カメラを定義                                                |
-| ゲームフレームワーク関連   | Camera/PlayerCameraManager.h                   | カメラズーム・揺れなどの管理クラス                                           |
+</details>
 
-[このリンクは上記のライブラリを使用した実際のコードです。](Source/MysterySolving/GameMode_Pause.cpp)（Source/MysterySolving/GameMode_Pause.cpp）
+ <details>
+  <summary><b>🛠️ライブラリ ②：UI・コンポーネント関連（クリックで展開）</b></summary>
+ 
+  | カテゴリ            | インクルード                                   | 用途・説明                                             |
+ |--------------------|-----------------------------------------------|--------------------------------------------------------|
+ | コンポーネント関連   | Components/ActorComponent.h                   | 任意の機能追加用の基本コンポーネント                     |
+ | コンポーネント関連   | Components/AudioComponent.h                   | 音声（BGM/SE）の再生・制御用                            |
+ | コンポーネント関連   | Components/BoxComponent.h                     | 四角形のコリジョン（当たり判定）                         |
+ | コンポーネント関連   | Components/CapsuleComponent.h                 | カプセル型コリジョン。主にキャラ用                      |
+ | コンポーネント関連   | Components/InputComponent.h                   | 入力をアクターにバインドするためのクラス                 |
+ | コンポーネント関連   | Components/PointLightComponent.h              | 点光源ライトを扱うコンポーネント                         |
+ | コンポーネント関連   | Components/PrimitiveComponent.h               | 物理・描画・コリジョンの基底クラス                       |
+ | コンポーネント関連   | Components/SceneComponent.h                   | トランスフォーム階層構造の基礎                           |
+ | コンポーネント関連   | Components/SphereComponent.h                  | 球形コリジョンの定義                                   |
+ | コンポーネント関連   | Components/StaticMeshComponent.h              | スタティックメッシュの表示・操作                         |
+ | コンポーネント関連   | Components/WidgetComponent.h                  | 3D空間にUIを表示するためのコンポーネント                 |
+ | UI（UMG）関連       | Blueprint/UserWidget.h                         | ウィジェットの基底クラス（UMG）                          |
+ | UI（UMG）関連       | Blueprint/WidgetBlueprintLibrary.h             | UMG操作用のユーティリティ関数群                         |
+ | UI（UMG）関連       | Components/Image.h                             | UI上の画像表示用コンポーネント                           |
+ | UI（UMG）関連       | Components/TextBlock.h                         | UI上のテキスト表示用コンポーネント                       |
+ <h4>・以下のリンクでは、上記ライブラリの使用したコード例を一部ご紹介しています。</h4>
+ 
+ [このリンクは「Blueprint/UserWidget.h」のライブラリを使用した実際のコードです。](Source/MysterySolving/GameMode_GameOver.cpp)(Source/MysterySolving/GameMode_GameOver.cpp)
+ 
+ <details>
+  <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
+  <br>
+  
+  - **ウィジェット生成**
+   - `UpdateTimer()` 内でウィジェットを生成しています。
+     <img width="950" height="430" alt="Blueprint UserWidget 使用例①" src="https://github.com/user-attachments/assets/1e7bd9ed-24a7-451b-9cf5-736c6e56692a" />
+ 
+ - **UTextBlock による残り時間更新・強調表示の切り替え**
+   - 残り時間を UTextBlock に表示し、特定時刻で強調表示に切り替えます。
+     <img width="1161" height="738" alt="Blueprint UserWidget h使用例② " src="https://github.com/user-attachments/assets/2a08f25a-1b61-4322-a2e3-d7d8186ef209" />
+ 
+ - **時間切れ時のUI表示 & 入力モード切替（SetInputMode）**
+   - 時間切れ時は専用UIを表示し、`SetInputMode` により操作を UI 専用に切り替えています。
+     <img width="809" height="688" alt="Blueprint UserWidget 使用例③" src="https://github.com/user-attachments/assets/f7cabfde-cdac-4fc3-847c-bbcaf71fc295" />
+  </details>
+ 
+ [このリンクは「Components関連」のライブラリを使用した実際のコードです。](Source/MysterySolving/TriggerComponent.cpp)(Source/MysterySolving/TriggerComponent.cpp)
+ 
+ <details>
+   <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
+   
+   ---
+   
+   ### TickComponent()
+   - 自身のメッシュ取得
+   - DoorMover から `StorneDoorMoverFunction()` を呼び出し
+   - 物理挙動の切替など
+   <img width="841" height="469" alt="Components関連使用例①" src="https://github.com/user-attachments/assets/91d85f43-fbdb-490b-a9ab-185c32dc2c7c" />
+   
+   ---
+   
+   ### OvarlapFunction()
+   - 許容アクターとのオーバーラップ判定
+   - 物理挙動や位置移動、ドア操作の主要処理
+   <img width="976" height="788" alt="Components関連使用例②" src="https://github.com/user-attachments/assets/fd2c59e3-0160-4ff8-ab2a-5e55b22ea35c" />
+   
+   ---
+   
+   ### SetCollisionForTaggedActors()
+   - タグに応じてコリジョンレスポンスを動的に変更
+   <img width="1269" height="382" alt="Components関連使用例③" src="https://github.com/user-attachments/assets/1f6202fc-bcd9-450b-a943-3811dd196a53" />
+   
+ </details>
+
+</details>
 
 <details>
-  <summary><b>ライブラリ使用例の画像（一部から抜粋）</b></summary>
-  <br>
+  <summary><b>🛠️ライブラリ ③：演出・物理・ユーティリティ編（クリックで展開）</b></summary>
+ 
+ | カテゴリ               | インクルード                                | 用途・説明                                               |
+ |------------------------|--------------------------------------------|----------------------------------------------------------|
+ | アニメーション・VFX     | Animation/AnimInstance.h                   | スケルタルメッシュのアニメ制御クラス                     |
+ | アニメーション・VFX     | NiagaraComponent.h                         | Niagara VFX用のコンポーネント                             |
+ | アニメーション・VFX     | NiagaraFunctionLibrary.h                   | Niagaraエフェクトの生成・制御用関数群                     |
+ | アニメーション・VFX     | Particles/ParticleSystemComponent.h       | Cascade系パーティクル用コンポーネント                     |
+ | 物理制御               | PhysicsEngine/PhysicsHandleComponent.h    | オブジェクトのつかみ・移動制御用ハンドル                 |
+ | Kismet（便利機能）      | Kismet/GameplayStatics.h                   | レベル遷移、音再生、アクター取得などのユーティリティ     |
+ | Kismet（便利機能）      | Kismet/KismetSystemLibrary.h               | システムレベルのユーティリティ（ログ出力など）           |
+ | エンジン関連           | Engine/World.h                             | ワールド取得、アクター生成などに使用                       |
+ | エンジン関連           | EngineUtils.h                              | アクター検索・ループなどのユーティリティ                   |
+ | サウンド・アセット関連   | Sound/SoundBase.h                           | サウンドデータの基本クラス（BGM/SE）                       |
+ | サウンド・アセット関連   | UObject/ConstructorHelpers.h               | アセット参照取得（Constructor時など）                     |
+ <h4>・以下のリンクでは、上記ライブラリの使用したコード例を一部ご紹介しています。</h4>
 
-  - TimerManager.h ライブラリを実際に使用した例です。
-  - 画像説明：「UDoorMover::StartTimer()」 内で公式の FTimerManager::SetTimer() を使用し、5秒後に ResetTimer() を実行して音声再生を制御しています。
-  <img width="1000" height="1000" alt="TimerManager h使用例コード" src="https://github.com/user-attachments/assets/491651fc-688e-4a7a-8352-4bf543995863" />
+  [このリンクは「NiagaraComponent、Engine関連」のライブラリを使用した実際のコードです。](Source/MysterySolving/FinalMysterySolvingRoomClass.cpp)(Source/MysterySolving/FinalMysterySolvingRoomClass.cpp）
+
+ <details>
+   <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
   
-  - 以下の画像のコードは 「ShowPauseMenu()」 関数内に記述されており、ポーズ中にUIを表示し、入力モードやマウスカーソルの切り替えを行っています。
-  <img width="994" height="188" alt="GameFramework関連の使用例コード。1" src="https://github.com/user-attachments/assets/71d10a38-8eb2-437e-84d9-9ba3c0a9edfd" />
+  - **NiagaraComponentの処理例**  
+    - `CandlEeraseFunction()` 内で `UNiagaraComponent` を取得  
+    - `SetVisibility()` によりロウソクの炎を点火／消火で切り替える演出を実装
+  
+  <br>
+  <img width="1066" height="840" alt="NiagaraComponent 使用例" src="https://github.com/user-attachments/assets/b4c0761e-3fcb-446b-b6e7-3cc598081c35" />
+  
+  - **Engine関連の処理例**  
+    - `Engine/World.h` や `EngineUtils.h` を活用し、ワールドからアクターを取得・検索する処理を実装
+  <br>
+  <img width="792" height="340" alt="Engineライブラリの使用例" src="https://github.com/user-attachments/assets/fcef46ef-1d7a-47ca-b833-1e1d6ed7d645" />
+  
+  - `FindActorByName()` の使用例
+  <img width="677" height="310" alt="Engine関連ヘッダーの使用例コード2_FindActorByName実際の利用方法" src="https://github.com/user-attachments/assets/28636a6d-f025-49ce-bc2b-9544d6436464" />
 
-  - ※ 以下の画像のコードは ShowPauseMenu() 関数内に記述されており、ポーズ中にUIを表示し、入力モードやマウスカーソルの切り替えを行っています。
-  <img width="737" height="137" alt="GameFramework関連の使用例コード。2" src="https://github.com/user-attachments/assets/3cbb54f8-5ef0-4965-950f-6c7b7a037098" />
+ </details>
 
-  - 以下の画像HidePauseMenu() では、ポーズ用UIを非表示にし、入力モードをゲーム専用に戻します。
-  <img width="901" height="414" alt="GameFramework関連の使用例コード。3" src="https://github.com/user-attachments/assets/831082e8-9e55-465b-b416-419c87ddd972" />
 </details>
-</details>
+
 ---
 
 # 4. 【📂 ディレクトリ構成】
