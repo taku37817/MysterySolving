@@ -105,7 +105,7 @@ DSP Action（有料）
 
 ---
 
-# 3. 【🛠️ 使用技術・モジュール・ライブラリ一覧（コード紹介あり）】
+# 3. 【🛠️ 使用技術・モジュール・<br> ライブラリ一覧（コード紹介あり）】
 <h3><a href="https://github.com/taku37817/MysterySolving/tree/RestorationBranch?tab=readme-ov-file#%E7%9B%AE%E6%AC%A1">目次へ</a></h3>
 
 <details>
