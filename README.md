@@ -175,16 +175,20 @@ DSP Action（有料）
  ---
  
  [このリンクは「GameFramework」関連の実際のコードです。](Source/MysterySolving/GameMode_Pause.cpp)（Source/MysterySolving/GameMode_Pause.cpp）
- 
+- ポーズメニューの表示・非表示を切り替える
+- 入力モードを GameOnly ⇄ GameAndUI に切り替える
+- マウスカーソル表示をON/OFF
+  
  <details>
    <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
    <br>
  
-   - **ShowPauseMenu() 内の処理例**  
-     UI 表示、入力モード切替、マウスカーソル表示を管理。
-     <img width="994" height="188" alt="GameFramework使用例1" src="https://github.com/user-attachments/assets/71d10a38-8eb2-437e-84d9-9ba3c0a9edfd" />
-     <img width="737" height="137" alt="GameFramework使用例2" src="https://github.com/user-attachments/assets/3cbb54f8-5ef0-4965-950f-6c7b7a037098" />
- 
+- **ShowPauseMenu() 内の処理例**  
+   - ライブラリ： `#include "GameFramework/PlayerController.h"`  
+   - UI表示、入力モード（FInputModeGameAndUI）切替、マウスカーソル表示を管理。
+
+     <img width="982" height="728" alt="GameFramework PlayerController h ライブラリ使用例" src="https://github.com/user-attachments/assets/5827a85c-0af4-4f1d-9f12-7da1aa2b35eb" />
+
    - **HidePauseMenu() 内の処理例**  
      ポーズ用UI非表示、入力モードを `GameOnly` に戻す。
      <img width="901" height="414" alt="GameFramework使用例3" src="https://github.com/user-attachments/assets/831082e8-9e55-465b-b416-419c87ddd972" />
@@ -193,7 +197,8 @@ DSP Action（有料）
  ---
  
  [このリンクは「TimerManager.h」の実際のコードです。](Source/MysterySolving/DoorMover.cpp)（Source/MysterySolving/DoorMover.cpp）
- 
+ - こちらは「ドア（ゲート）」の挙動に関するコードになります。
+
  <details>
    <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
    <br>
@@ -206,6 +211,7 @@ DSP Action（有料）
  ---
  
  [このリンクは「DrawDebugHelpers.h」の実際のコードです。](Source/MysterySolving/Grabber.cpp)（Source/MysterySolving/Grabber.cpp）
+ - こちらは「オブジェクトを持つ・放す・取得」に関する判定を制御しているコードになります。
  
  <details>
    <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
@@ -245,6 +251,15 @@ DSP Action（有料）
  <h4>・以下のリンクでは、上記ライブラリの使用したコード例を一部ご紹介しています。</h4>
  
  [このリンクは「Blueprint/UserWidget.h」のライブラリを使用した実際のコードです。](Source/MysterySolving/GameMode_GameOver.cpp)(Source/MysterySolving/GameMode_GameOver.cpp)
+- **時間制限のカウントダウン処理**  
+  - `UpdateTimer()` にて毎秒残り時間を減らし、UIを更新  
+  - 残り時間に応じてテキストの強調表示やサウンド再生を行う  
+
+- **時間切れ（ゲームオーバー）時の処理**  
+  - `HandleGameOver()` にて専用UIを表示し、`SetInputMode()` でUI操作モードに切り替え  
+  - `bShowMouseCursor = true` にしてマウスカーソルを表示  
+  - `DisableInput()` でプレイヤーの操作を無効化  
+
  
  <details>
   <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
@@ -264,6 +279,7 @@ DSP Action（有料）
   </details>
  
  [このリンクは「Components関連」のライブラリを使用した実際のコードです。](Source/MysterySolving/TriggerComponent.cpp)(Source/MysterySolving/TriggerComponent.cpp)
+ - 指定タグを持つオブジェクトがスタンド（台）に接触しているかを判定し、条件に応じてドアの移動や物理設定を切り替える処理です。
  
  <details>
    <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
@@ -271,7 +287,9 @@ DSP Action（有料）
    ---
    
    ### TickComponent()
-   - 自身のメッシュ取得
+   - ライブラリ #include "Components/StaticMeshComponent.h"
+   - `meshComponent = GetOwner()->FindComponentByClass<UStaticMeshComponent>();` <br>
+      自分自身のメッシュコンポーネント取得
    - DoorMover から `StorneDoorMoverFunction()` を呼び出し
    - 物理挙動の切替など
    <img width="841" height="469" alt="Components関連使用例①" src="https://github.com/user-attachments/assets/91d85f43-fbdb-490b-a9ab-185c32dc2c7c" />
@@ -312,6 +330,24 @@ DSP Action（有料）
  <h4>・以下のリンクでは、上記ライブラリの使用したコード例を一部ご紹介しています。</h4>
 
   [このリンクは「NiagaraComponent、Engine関連」のライブラリを使用した実際のコードです。](Source/MysterySolving/FinalMysterySolvingRoomClass.cpp)(Source/MysterySolving/FinalMysterySolvingRoomClass.cpp）
+  - ## 最終謎解き部屋コンポーネント
+
+- **銅像関連**  
+  プレイヤーが銅像を持つ／置く、あるいは条件を満たすとドアが開く／閉まる  
+  → `DoYouHaveBronzeStatueOrPlaced()` がメイン制御
+
+- **キャンドル関連**  
+  点灯／消灯に応じて Niagara パーティクルと PointLight の表示を切替  
+  → `CandlEeraseFunction()` / `StateOfTheCandle()` で制御
+
+- **ドア移動制御**  
+  `DoorMoveJudgeFunction()` で DoorMover コンポーネントを操作  
+  DeltaTime に応じて毎フレーム補間移動
+
+- **アクター検索・タグ判定**  
+  ワールド内の特定アクターを名前やタグで取得  
+  オーバーラップ中のアクターに応じて処理を切替
+
 
  <details>
    <summary><b>こちらから、コードの一部を画像で確認できます。</b></summary>
