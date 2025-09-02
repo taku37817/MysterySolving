@@ -143,7 +143,7 @@ DSP Action（有料）
 
 - <h3>実際に使用モジュールを登録したときのコード（Build.cs）です。</h3>
 
-<img src="https://github.com/taku37817/MysterySolving/blob/a4c0674c9217e24597177e6ee2f687cdf3a23bb9/Source/MysterySolving/MysterySolving.Build.cs" alt="モジュール" width="700"/>
+<img src="Source/MysterySolving/MysterySolving.Build.cs" alt="モジュール" width="700"/>
 
  - [こちらはBuild.csの詳細になります。]("Source/MysterySolving/MysterySolving.Build.cs")
 
