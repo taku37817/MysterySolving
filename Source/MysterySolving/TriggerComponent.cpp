@@ -74,12 +74,12 @@ void UTriggerComponent::OvarlapFunction()
         {
             if(IsOverlappingActor(actor) && isItemSwitchJudge)  //オーバーラップしているアクターをループ処理
             {
-                meshComponent->SetSimulatePhysics(true);
-                meshComponent->SetEnableGravity(true);
-                meshComponent->SetCollisionResponseToChannel(ECC_WorldDynamic,ECR_Block);
-                meshComponent->SetCollisionResponseToChannel(ECC_WorldStatic,ECR_Block);
+                meshComponent->SetSimulatePhysics(true); //物理シミュレーションを有効化
+                meshComponent->SetEnableGravity(true);　 //重力の影響を有効化
+                meshComponent->SetCollisionResponseToChannel(ECC_WorldDynamic,ECR_Block);//可動するオブジェクトとの衝突をブロックに設定
+                meshComponent->SetCollisionResponseToChannel(ECC_WorldStatic,ECR_Block);//動かない地形や壁などのオブジェクトとの衝突をブロックに設定
                 standGrabbedJudge = true;
-                GargoyleOvarlapJudge(true); //StoneSpecialDoorMoverコンポネントのStoneGateの開閉条件でしよう
+                GargoyleOvarlapJudge(true); //StoneSpecialDoorMoverコンポネントのStoneGateの開閉条件
                 for(AActor* doorActor : doorActors)  //関連ドアアクターをループ処理
                 {
                     doorComponent = doorActor->FindComponentByClass<UDoorMover>();  //ドアコンポーネントを取得
