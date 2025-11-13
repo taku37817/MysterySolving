@@ -78,7 +78,7 @@ void UTriggerComponent::OvarlapFunction()
                 meshComponent->SetEnableGravity(true);　 //重力の影響を有効化
                 meshComponent->SetCollisionResponseToChannel(ECC_WorldDynamic,ECR_Block);//可動するオブジェクトとの衝突をブロックに設定
                 meshComponent->SetCollisionResponseToChannel(ECC_WorldStatic,ECR_Block);//動かない地形や壁などのオブジェクトとの衝突をブロックに設定
-                standGrabbedJudge = true;
+                standGrabbedJudge = true; //スタンドを持てるかどうかを判定(trueは持てる)
                 GargoyleOvarlapJudge(true); //StoneSpecialDoorMoverコンポネントのStoneGateの開閉条件
                 for(AActor* doorActor : doorActors)  //関連ドアアクターをループ処理
                 {
