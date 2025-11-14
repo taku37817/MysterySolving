@@ -1,9 +1,9 @@
-#include "TriggerComponent.h"
-#include "Components/StaticMeshComponent.h"
-#include "GameFramework/Actor.h" // GetOwner() を使うために必要
-#include "Engine/World.h"
+#include "TriggerComponent.h"　// このコンポーネント（自作クラス）のヘッダーファイル。
+#include "Components/StaticMeshComponent.h"　// Static Mesh（3Dモデル）のコンポーネントを扱うためのヘッダー。
+#include "GameFramework/Actor.h" // GetOwner() を使うために必要。Actor の基本機能を提供するヘッダー。
+#include "Engine/World.h"　// ワールド情報（現在のレベルや時間など）にアクセスするために必要。
 #include "EngineUtils.h" // TActorIteratorを使用するために必要
-#include "Kismet/GameplayStatics.h"
+#include "Kismet/GameplayStatics.h"　// UGameplayStatics（サウンド再生やActor検索などの便利関数）を使うためのヘッダー。
 
 UTriggerComponent::UTriggerComponent()
 {
@@ -41,9 +41,13 @@ void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
     {
         meshComponent->SetUseCCD(true);
     }
-    OvarlapFunction();
-    NotOvarlapFunction();
-    SetCollisionForTaggedActors(setCollisionForTaggedActorsTag);
+	//オーバーラップ中
+    OvarlapFunction(); 
+	//オーバーラップしていない時
+    NotOvarlapFunction(); 
+	// 指定したタグを持つアクターのコリジョンレスポンスを Overlap に設定するメソッド
+    SetCollisionForTaggedActors(setCollisionForTaggedActorsTag); 
+	// オーバーラップしたアクターのタグを取得する処理
     CheckActorTagsAndMultipleConditionsDoorMoveJudge();
     meshComponent->SetCollisionResponseToChannel(grabberChannel,standGrabbedJudge ? ECR_Block : ECR_Ignore);
     
@@ -53,6 +57,8 @@ void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 //         switchStandComponent->SetStandPushJudge(standGrabbedJudge); //SwitchMoverのスイッチ台を押す動作オン・オフ切り替え
 //     }
 }
+
+//オーバーラップ中
 void UTriggerComponent::OvarlapFunction()
 {
     TArray<AActor*> actors; //オーバーラップ中のアクターを格納する配列
@@ -69,10 +75,11 @@ void UTriggerComponent::OvarlapFunction()
     //ドアの開閉を行うための処理
     if(getAcceptableAtor != nullptr) //許容アクターが存在する場合
     {
-        // オーバーラップ中の処理
+        
         for(AActor* actor : actors)  //オーバーラップしているアクターをループ処理
         {
-            if(IsOverlappingActor(actor) && isItemSwitchJudge)  //オーバーラップしているアクターをループ処理
+			// 台とガーゴイル像がオーバーラップ中かつ、ガーゴイル像のスイッチ判定が有効の場合実行
+            if(IsOverlappingActor(actor) && isItemSwitchJudge)  
             {
                 meshComponent->SetSimulatePhysics(true); //物理シミュレーションを有効化
                 meshComponent->SetEnableGravity(true);　 //重力の影響を有効化
@@ -89,7 +96,7 @@ void UTriggerComponent::OvarlapFunction()
                         doorComponent->SetShouldMove(!doorComponent->shouldMove); //DoorMoverのbool変数shouldMoveの切り替え
                     }
                 }
-                isItemSwitchJudge = false; //ドアスイッチ判定を無効にする
+                isItemSwitchJudge = false; //ガーゴイル像のスイッチ判定を無効にする
             }
             if(IsOverlappingActor(actor)) //接触時に取得したアクターがトリガーコリジョンに触れているか
             {
@@ -108,6 +115,8 @@ void UTriggerComponent::OvarlapFunction()
         }
     }
 }
+
+//オーバーラップしていない時
 void UTriggerComponent::NotOvarlapFunction()
 {
     TArray<AActor*> actors; //オーバーラップ中のアクターを格納する配列
@@ -117,10 +126,10 @@ void UTriggerComponent::NotOvarlapFunction()
     //許容アクターが存在しない場合
     if(!getAcceptableAtor)
     {
-        meshComponent->SetSimulatePhysics(false);
-        meshComponent->SetEnableGravity(false);
-        meshComponent->SetCollisionResponseToChannel(ECC_WorldDynamic,ECR_Overlap);
-        meshComponent->SetCollisionResponseToChannel(ECC_WorldStatic,ECR_Overlap);
+        meshComponent->SetSimulatePhysics(false); //物理シミュレーションを無効
+        meshComponent->SetEnableGravity(false); //重力の影響を無効
+        meshComponent->SetCollisionResponseToChannel(ECC_WorldDynamic,ECR_Overlap);　//可動するオブジェクトとの衝突をオーバーラップに設定
+        meshComponent->SetCollisionResponseToChannel(ECC_WorldStatic,ECR_Overlap);　//動かない地形や壁などのオブジェクトとの衝突をオーバーラップに設定
         GargoyleOvarlapJudge(false); //StoneSpecialDoorMoverコンポネントのStoneGateの開閉条件でしよう
         standGrabbedJudge = false; //SwitchMoverのSetStandPushJudge(bool)の動作がfalse
         for(AActor* actor : actors)
@@ -136,12 +145,12 @@ void UTriggerComponent::NotOvarlapFunction()
                         doorComponent->SetShouldMove(!doorComponent->shouldMove);  //DoorMoverのbool変数shouldMoveの切り替え
                     }
                 }
-                isItemSwitchJudge = true; //ドアスイッチ判定を有効
+                isItemSwitchJudge = true; //ガーゴイル像のスイッチ判定を無効にする
             }
         }
     }
 }
-
+// オーバーラップしたアクターのタグを取得する処理
 void UTriggerComponent::CheckActorTagsAndMultipleConditionsDoorMoveJudge()
 {
     TArray<AActor*> actors; // オーバーラップ中のアクターを格納する配列
